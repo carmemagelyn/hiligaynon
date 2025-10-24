@@ -98,7 +98,7 @@
         <!-- Cards View -->
         <div v-if="viewMode === 'cards'" class="vocabulary-cards">
           <div class="row">
-            <div class="col-xl-4 col-lg-6 col-md-6 mb-4" v-for="word in paginatedVocabulary" :key="word.id">
+            <div class="col-12 col-sm-6 col-md-6 col-lg-6 col-xl-4 mb-4" v-for="word in paginatedVocabulary" :key="word.id">
               <VocabularyCard 
                 :word="word" 
                 :selected-language="selectedLanguage"
@@ -514,6 +514,23 @@ export default {
   
   .vocabulary-controls .btn-group {
     margin-bottom: 0.5rem;
+  }
+  
+  /* Ensure vocabulary content is visible on mobile */
+  .vocabulary-cards, .vocabulary-list {
+    width: 100% !important;
+    display: block !important;
+    visibility: visible !important;
+    opacity: 1 !important;
+  }
+  
+  .vocabulary-cards .row {
+    margin: 0 -8px;
+  }
+  
+  .vocabulary-cards .col-12 {
+    padding: 0 8px;
+    margin-bottom: 16px !important;
   }
 }
 </style>

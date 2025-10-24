@@ -820,6 +820,24 @@ body {
     flex-shrink: 0 !important;
   }
   
+  /* Ensure vocabulary lists and cards are visible on mobile */
+  .vocabulary-cards, .vocabulary-list {
+    display: block !important;
+    visibility: visible !important;
+    opacity: 1 !important;
+  }
+  
+  .vocabulary-cards .row {
+    display: flex !important;
+    flex-wrap: wrap !important;
+  }
+  
+  .vocabulary-cards .col-12 {
+    display: block !important;
+    width: 100% !important;
+    max-width: 100% !important;
+  }
+  
   .logo-image {
     width: 60px;
     height: 60px;
