@@ -4,9 +4,9 @@
     <section class="hero-section py-5">
       <div class="container text-center text-white">
         <div class="row justify-content-center">
-          <div class="col-lg-8">
+          <div class="col-lg-8 col-md-10 col-sm-12">
             <h1 class="display-4 fw-bold mb-4">
-              <Icon icon="mdi:flag" width="48" height="48" class="me-3" />
+              <Icon icon="mdi:flag" width="40" height="40" class="me-2" />
               Learn Hiligaynon
             </h1>
             <p class="lead mb-4">
@@ -37,7 +37,7 @@
     <section class="py-5 bg-light">
       <div class="container">
         <div class="row text-center">
-          <div class="col-md-3 mb-4">
+          <div class="col-sm-6 col-md-3 mb-3">
             <div class="stat-card h-100">
               <div class="stat-icon">
                 <Icon icon="mdi:book-open-variant" width="48" height="48" class="icon-rojo" />
@@ -46,7 +46,7 @@
               <p class="stat-label">Vocabulary Words</p>
             </div>
           </div>
-          <div class="col-md-3 mb-4">
+          <div class="col-sm-6 col-md-3 mb-3">
             <div class="stat-card h-100">
               <div class="stat-icon">
                 <Icon icon="mdi:camera" width="48" height="48" class="icon-rojo" />
@@ -55,7 +55,7 @@
               <p class="stat-label">Visual Examples</p>
             </div>
           </div>
-          <div class="col-md-3 mb-4">
+          <div class="col-sm-6 col-md-3 mb-3">
             <div class="stat-card h-100">
               <div class="stat-icon">
                 <Icon icon="mdi:target" width="48" height="48" class="icon-rojo" />
@@ -64,7 +64,7 @@
               <p class="stat-label">Daily Categories</p>
             </div>
           </div>
-          <div class="col-md-3 mb-4">
+          <div class="col-sm-6 col-md-3 mb-3">
             <div class="stat-card h-100">
               <div class="stat-icon">
                 <Icon icon="mdi:trophy" width="48" height="48" class="icon-rojo" />
@@ -356,5 +356,66 @@ export default {
 @keyframes glow {
   from { box-shadow: 0 0 10px rgba(255, 255, 255, 0.5); }
   to { box-shadow: 0 0 20px rgba(255, 255, 255, 0.8); }
+}
+
+/* Mobile-specific styles */
+@media (max-width: 768px) {
+  .hero-section h1 {
+    font-size: 2rem !important;
+  }
+  
+  .hero-section .lead {
+    font-size: 1rem !important;
+  }
+  
+  .stat-card {
+    padding: 15px;
+    margin-bottom: 15px;
+  }
+  
+  .stat-number {
+    font-size: 1.5rem !important;
+  }
+  
+  .stat-label {
+    font-size: 0.9rem !important;
+  }
+  
+  .logo-image {
+    width: 80px;
+    height: 80px;
+  }
+}
+
+@media (max-width: 480px) {
+  .hero-section h1 {
+    font-size: 1.7rem !important;
+  }
+  
+  .hero-section h1 .iconify {
+    width: 30px !important;
+    height: 30px !important;
+  }
+  
+  .hero-section p {
+    font-size: 0.9rem !important;
+  }
+  
+  .stat-card {
+    padding: 12px;
+  }
+  
+  .stat-icon .iconify {
+    width: 36px !important;
+    height: 36px !important;
+  }
+  
+  .stat-number {
+    font-size: 1.3rem !important;
+  }
+  
+  .stat-label {
+    font-size: 0.85rem !important;
+  }
 }
 </style>
