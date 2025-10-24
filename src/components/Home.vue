@@ -218,7 +218,7 @@ export default {
         id: 'greetings',
         name: 'Greetings & Politeness',
         description: 'Essential daily greetings',
-        icon: '👋',
+        icon: 'mdi:hand-wave',
         color: 'var(--yinmn-blue)',
         wordCount: 25
       },

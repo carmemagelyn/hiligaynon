@@ -443,7 +443,7 @@ export default {
         id: 2,
         name: 'Quiz Master',
         description: 'Score 100% on any quiz',
-        icon: '🎯',
+        icon: 'mdi:target',
         unlocked: false
       },
       {

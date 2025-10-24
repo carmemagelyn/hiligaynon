@@ -4,7 +4,7 @@
 export const vocabularyData = {
   greetings: {
     category: 'Greetings & Politeness',
-    icon: '👋',
+    icon: 'mdi:hand-wave',
     color: 'var(--yinmn-blue)',
     description: 'Essential daily greetings and polite expressions',
     words: [
@@ -73,6 +73,12 @@ export const vocabularyData = {
           korean: '실례합니다, 화장실이 어디에 있나요?',
           chinese: '不好意思，厕所在哪里？'
         },
+        hasImage: true,
+        image: {
+          url: '/images/excuse-me.jpeg',
+          title: 'Excuse me - Pasensya na',
+          description: 'Person politely asking for directions'
+        },
         image_description: 'Person politely asking for directions',
         category_tags: ['polite', 'daily', 'essential']
       },
@@ -98,7 +104,7 @@ export const vocabularyData = {
   
   food: {
     category: 'Food & Dining',
-    icon: '�',
+    icon: 'mdi:food',
     color: 'var(--rojo)',
     description: 'Common food items and dining vocabulary',
     words: [
@@ -192,7 +198,7 @@ export const vocabularyData = {
   
   school: {
     category: 'School Life',
-    icon: '📚',
+    icon: 'mdi:school',
     color: 'var(--yinmn-blue)',
     description: 'School supplies and classroom vocabulary',
     words: [
@@ -286,7 +292,7 @@ export const vocabularyData = {
   
   transportation: {
     category: 'Transportation',
-    icon: '🚗',
+    icon: 'mdi:car',
     color: 'var(--rojo)',
     description: 'Transportation methods and directions',
     words: [
@@ -380,7 +386,7 @@ export const vocabularyData = {
   
   shopping: {
     category: 'Shopping & Market',
-    icon: '🛒',
+    icon: 'mdi:shopping',
     color: 'var(--yinmn-blue)',
     description: 'Shopping vocabulary and market terms',
     words: [

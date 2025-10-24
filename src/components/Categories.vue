@@ -168,7 +168,7 @@
                   <div class="learning-mode-card p-3 border rounded cursor-pointer" 
                        @click="startLearningMode('quiz')">
                     <div class="d-flex align-items-center">
-                      <span class="fs-2 me-3">🎯</span>
+                      <Icon icon="mdi:target" width="32" height="32" class="me-3" />
                       <div>
                         <h6 class="mb-1">Quiz Mode</h6>
                         <small class="text-muted">Test your knowledge</small>

@@ -81,7 +81,7 @@
           <!-- Example Sentences -->
           <div class="examples-section mb-4">
             <h5 class="section-title mb-3">
-              <span class="title-icon">💬</span>
+              <Icon icon="mdi:message-text" width="20" height="20" class="title-icon" />
               Example Sentences
             </h5>
             

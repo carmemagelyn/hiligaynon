@@ -42,12 +42,12 @@
               </div>
               
               <!-- Placeholder -->
-              <div v-else class="vocabulary-image-placeholder d-flex align-items-center justify-content-center">
+              <div v-else class="vocabulary-image-placeholder">
                 <div class="text-center">
-                  <div class="image-icon mb-2">
-                    <Icon icon="mdi:image" width="32" height="32" class="text-muted" />
+                  <div class="image-icon">
+                    <Icon icon="mdi:image" width="24" height="24" class="text-muted" />
                   </div>
-                  <small class="text-muted">{{ word.image_description || 'No image available' }}</small>
+                  <small class="text-muted d-block">{{ word.image_description || 'No image' }}</small>
                 </div>
               </div>
             </div>
@@ -225,21 +225,16 @@ export default {
 
 <style scoped>
 .vocabulary-card-container {
-  perspective: 1000px;
-  height: 450px;
+  width: 100%;
+  height: auto;
+  min-height: 280px;
 }
 
 .vocabulary-card {
   position: relative;
   width: 100%;
   height: 100%;
-  transition: transform 0.6s;
-  transform-style: preserve-3d;
   cursor: pointer;
-}
-
-.vocabulary-card.flipped {
-  transform: rotateY(180deg);
 }
 
 .vocabulary-card.learned {
@@ -247,20 +242,26 @@ export default {
 }
 
 .card-face {
-  position: absolute;
   width: 100%;
   height: 100%;
-  backface-visibility: hidden;
   border-radius: 15px;
   overflow: hidden;
 }
 
 .card-back {
-  transform: rotateY(180deg);
+  display: none;
+}
+
+.vocabulary-card.flipped .card-front {
+  display: none;
+}
+
+.vocabulary-card.flipped .card-back {
+  display: block;
 }
 
 .vocabulary-image-container {
-  height: 120px;
+  height: 350px;
 }
 
 .vocabulary-image {
@@ -298,11 +299,16 @@ export default {
   background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
   border-radius: 10px;
   border: 2px dashed #dee2e6;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
 }
 
 .image-icon {
-  font-size: 2rem;
-  opacity: 0.7;
+  font-size: 1.5rem;
+  opacity: 0.6;
+  margin-bottom: 4px;
 }
 
 .pronunciation-text {
@@ -340,12 +346,10 @@ export default {
   transform: scale(1.1);
 }
 
-.vocabulary-card:hover {
-  transform: translateY(-5px) scale(1.02);
-}
-
-.vocabulary-card.flipped:hover {
-  transform: rotateY(180deg) translateY(-5px) scale(1.02);
+@media (hover: hover) {
+  .vocabulary-card:hover {
+    transform: translateY(-5px) scale(1.02);
+  }
 }
 
 .usage-context {
@@ -357,84 +361,151 @@ export default {
 
 @media (max-width: 768px) {
   .vocabulary-card-container {
+    min-height: 240px;
     height: auto;
-    min-height: 480px;
   }
   
   .vocabulary-image-container {
-    height: 80px;
+    height: 120px;
+    margin-bottom: 8px;
   }
   
-  .example-text {
-    font-size: 0.9rem;
-    padding: 8px;
+  .vocabulary-image-placeholder {
+    padding: 5px;
   }
   
-  /* Make buttons more visible and accessible on mobile */
-  .card-footer-mobile {
-    padding: 12px 16px !important;
-    gap: 8px;
-    flex-wrap: wrap;
-  }
-  
-  .mobile-button {
-    font-size: 0.875rem !important;
-    padding: 10px 14px !important;
-    min-height: 44px !important;
-    min-width: 120px;
-    flex: 1;
-    white-space: nowrap;
-    display: flex !important;
-    align-items: center;
-    justify-content: center;
-    border-width: 2px !important;
-  }
-  
-  .mobile-button .me-1 {
-    margin-right: 6px !important;
-  }
-  
-  /* Ensure buttons are always visible */
-  .card-footer-mobile .btn {
-    visibility: visible !important;
-    opacity: 1 !important;
-    display: flex !important;
-  }
-  
-  /* Ensure card face shows full content */
-  .card-face {
-    overflow: visible !important;
+  .vocabulary-image-placeholder small {
+    font-size: 0.7rem;
+    line-height: 1.2;
   }
   
   .card-face .card {
-    height: auto !important;
-    min-height: 100%;
-    display: flex;
-    flex-direction: column;
+    min-height: 200px;
+    display: flex !important;
+    flex-direction: column !important;
   }
   
   .card-body {
-    flex: 1;
-    padding-bottom: 0 !important;
+    flex: 1 1 auto !important;
+    padding: 12px !important;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    min-height: 0;
   }
   
   .card-footer-mobile {
-    margin-top: auto;
-    flex-shrink: 0;
+    margin-top: auto !important;
+    flex-shrink: 0 !important;
+    padding: 8px 12px !important;
+    display: flex !important;
+    gap: 8px;
+    position: relative;
+    bottom: 0;
+    width: 100%;
+  }
+  
+  .mobile-button {
+    font-size: 0.875rem;
+    padding: 8px 12px;
+    min-height: 40px;
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
   }
 }
 
 /* Additional mobile styles for very small screens */
 @media (max-width: 480px) {
+  .vocabulary-card-container {
+    min-height: 200px;
+    height: auto;
+  }
+  
+  .card-face .card {
+    min-height: 200px !important;
+    display: flex !important;
+    flex-direction: column !important;
+  }
+  
+  .vocabulary-image-container {
+    height: 100px;
+    margin-bottom: 6px;
+  }
+  
+  .image-icon {
+    font-size: 1.2rem;
+  }
+  
+  .vocabulary-image-placeholder small {
+    font-size: 0.65rem;
+  }
+  
+  .card-body {
+    padding: 8px !important;
+    flex: 1 1 auto !important;
+  }
+  
   .card-footer-mobile {
     flex-direction: column !important;
-    gap: 8px !important;
+    gap: 4px !important;
+    padding: 6px 8px !important;
+    margin-top: auto !important;
+    flex-shrink: 0 !important;
+    position: relative;
+    bottom: 0;
+    width: 100%;
   }
   
   .mobile-button {
-    width: 100% !important;
-    flex: none !important;
-    margin-bottom: 4px;
+    font-size: 0.75rem;
+    padding: 6px 10px;
+    min-height: 36px;
+    width: 100%;
+  }
+}
+
+/* Specific styles for 390px width devices (iPhone 12 Pro, etc.) */
+@media (max-width: 390px) {
+  .vocabulary-card-container {
+    min-height: 220px;
+    height: auto;
+  }
+  
+  .card-face .card {
+    min-height: 220px !important;
+    display: flex !important;
+    flex-direction: column !important;
+  }
+  
+  .vocabulary-image-container {
+    height: 100px;
+    margin-bottom: 8px;
+  }
+  
+  .vocabulary-image-placeholder {
+    padding: 6px;
+  }
+  
+  .card-body {
+    padding: 10px !important;
+    flex: 1 1 auto !important;
+  }
+  
+  .card-footer-mobile {
+    flex-direction: row !important;
+    gap: 6px !important;
+    padding: 8px 10px !important;
+    margin-top: auto !important;
+    flex-shrink: 0 !important;
+  }
+  
+  .mobile-button {
+    font-size: 0.8rem;
+    padding: 8px 12px;
+    min-height: 38px;
+    flex: 1;
   }
 }
 

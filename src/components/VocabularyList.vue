@@ -97,47 +97,14 @@
 
         <!-- Cards View -->
         <div v-if="viewMode === 'cards'" class="vocabulary-cards">
-          <!-- Debug info -->
-          <div class="alert alert-info text-center m-3">
-            <h5>Debug Information</h5>
-            <p><strong>View Mode:</strong> {{ viewMode }}</p>
-            <p><strong>Total vocabulary:</strong> {{ allVocabulary ? allVocabulary.length : 'undefined' }}</p>
-            <p><strong>Filtered vocabulary:</strong> {{ filteredVocabulary ? filteredVocabulary.length : 'undefined' }}</p>
-            <p><strong>Paginated vocabulary:</strong> {{ paginatedVocabulary ? paginatedVocabulary.length : 'undefined' }}</p>
-            <p><strong>Current page:</strong> {{ currentPage }} of {{ totalPages }}</p>
-            <p><strong>Items per page:</strong> {{ itemsPerPage }}</p>
-            <p><strong>Search term:</strong> "{{ searchTerm }}"</p>
-            <p><strong>Category filter:</strong> "{{ selectedCategoryFilter }}"</p>
-          </div>
-          
-          <!-- Force show first 3 vocabulary items for testing -->
           <div class="row">
-            <div class="col-12 mb-4" v-if="allVocabulary && allVocabulary.length > 0">
-              <div class="alert alert-success">
-                <h6>Test Card (First vocabulary item):</h6>
-                <p><strong>Hiligaynon:</strong> {{ allVocabulary[0].hiligaynon }}</p>
-                <p><strong>English:</strong> {{ allVocabulary[0].english }}</p>
-              </div>
-            </div>
-            
             <div class="col-12 col-sm-6 col-md-6 col-lg-6 col-xl-4 mb-4" v-for="word in paginatedVocabulary" :key="word.id">
-              <!-- Test: Simple card instead of VocabularyCard component -->
-              <div class="card h-100" style="min-height: 200px; border: 2px solid red;">
-                <div class="card-body">
-                  <h5 class="card-title">{{ word.hiligaynon }}</h5>
-                  <p class="card-text">{{ word.english }}</p>
-                  <p class="card-text"><small>{{ selectedLanguage === 'korean' ? word.korean : word.chinese }}</small></p>
-                </div>
-              </div>
-              
-              <!-- Original component (commented for testing) -->
-              <!--
               <VocabularyCard 
                 :word="word" 
                 :selected-language="selectedLanguage"
                 @word-learned="markWordLearned"
-                @play-pronunciation="playPronunciation" />
-              -->
+                @play-pronunciation="playPronunciation"
+              />
             </div>
           </div>
         </div>
