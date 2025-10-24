@@ -97,20 +97,29 @@
 
         <!-- Cards View -->
         <div v-if="viewMode === 'cards'" class="vocabulary-cards">
-          <!-- Debug info - remove after fixing -->
-          <div v-if="paginatedVocabulary.length === 0" class="alert alert-info text-center m-3">
+          <!-- Debug info -->
+          <div class="alert alert-info text-center m-3">
             <h5>Debug Information</h5>
-            <p>No vocabulary cards to display.</p>
-            <p><strong>Total vocabulary:</strong> {{ allVocabulary.length }}</p>
-            <p><strong>Filtered vocabulary:</strong> {{ filteredVocabulary.length }}</p>
+            <p><strong>View Mode:</strong> {{ viewMode }}</p>
+            <p><strong>Total vocabulary:</strong> {{ allVocabulary ? allVocabulary.length : 'undefined' }}</p>
+            <p><strong>Filtered vocabulary:</strong> {{ filteredVocabulary ? filteredVocabulary.length : 'undefined' }}</p>
+            <p><strong>Paginated vocabulary:</strong> {{ paginatedVocabulary ? paginatedVocabulary.length : 'undefined' }}</p>
             <p><strong>Current page:</strong> {{ currentPage }} of {{ totalPages }}</p>
             <p><strong>Items per page:</strong> {{ itemsPerPage }}</p>
-            <p><strong>View mode:</strong> {{ viewMode }}</p>
             <p><strong>Search term:</strong> "{{ searchTerm }}"</p>
             <p><strong>Category filter:</strong> "{{ selectedCategoryFilter }}"</p>
           </div>
           
-          <div class="row" v-if="paginatedVocabulary.length > 0">
+          <!-- Force show first 3 vocabulary items for testing -->
+          <div class="row">
+            <div class="col-12 mb-4" v-if="allVocabulary && allVocabulary.length > 0">
+              <div class="alert alert-success">
+                <h6>Test Card (First vocabulary item):</h6>
+                <p><strong>Hiligaynon:</strong> {{ allVocabulary[0].hiligaynon }}</p>
+                <p><strong>English:</strong> {{ allVocabulary[0].english }}</p>
+              </div>
+            </div>
+            
             <div class="col-12 col-sm-6 col-md-6 col-lg-6 col-xl-4 mb-4" v-for="word in paginatedVocabulary" :key="word.id">
               <VocabularyCard 
                 :word="word" 
@@ -548,21 +557,31 @@ export default {
     margin-bottom: 16px !important;
   }
   
-  /* Debug and fix mobile vocabulary display */
+  /* Mobile vocabulary display fixes */
   .vocabulary-cards {
-    min-height: 200px !important;
-    background-color: rgba(255, 255, 255, 0.1) !important;
-    border: 1px dashed #ccc !important;
+    width: 100% !important;
+    display: block !important;
   }
   
   .vocabulary-cards .row {
-    min-height: 100px !important;
+    width: 100% !important;
+    display: flex !important;
+    flex-wrap: wrap !important;
+    margin: 0 !important;
   }
   
-  /* Ensure container section is visible */
-  section.py-4 {
+  .vocabulary-cards .col-12 {
+    width: 100% !important;
+    padding: 8px !important;
+    display: block !important;
+  }
+  
+  /* Force vocabulary card container to show */
+  .vocabulary-card-container {
+    display: block !important;
+    width: 100% !important;
+    height: auto !important;
     min-height: 400px !important;
-    overflow: visible !important;
   }
 }
 </style>
