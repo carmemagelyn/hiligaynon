@@ -1,0 +1,42 @@
+# Wrangler Configuration for Hiligaynon Vocabulary App
+# This configures deployment to Cloudflare Workers with static assets
+
+name = "hiligaynon"
+main = "src/index.js"
+compatibility_date = "2024-10-24"
+compatibility_flags = ["nodejs_compat"]
+
+# Static assets configuration
+[assets]
+directory = "./dist"
+
+# Environment variables (set these in Cloudflare Dashboard)
+# These will be available as VITE_* variables during build
+[env.production.vars]
+# VITE_AWS_ACCESS_KEY_ID = "your_aws_access_key"
+# VITE_AWS_SECRET_ACCESS_KEY = "your_aws_secret_key"  
+# VITE_AWS_REGION = "ap-southeast-1"
+# VITE_PEXELS_API_KEY = "your_pexels_api_key"
+
+# Build configuration
+[build]
+command = "npm run build"
+cwd = ""
+
+# Custom domains (configure in Cloudflare dashboard)
+# route = { pattern = "hiligaynon-vocab.yourdomain.com/*", zone_name = "yourdomain.com" }
+
+# KV storage for caching (if needed for advanced features)
+# kv_namespaces = [
+#   { binding = "VOCABULARY_CACHE", id = "your_kv_namespace_id" }
+# ]
+
+# R2 storage for assets (if you want to store audio files)
+# r2_buckets = [
+#   { binding = "ASSETS", bucket_name = "hiligaynon-assets" }
+# ]
+
+# Analytics (optional)
+# analytics_engine_datasets = [
+#   { binding = "ANALYTICS", dataset = "hiligaynon_usage" }
+# ]
