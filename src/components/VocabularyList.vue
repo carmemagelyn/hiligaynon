@@ -97,7 +97,20 @@
 
         <!-- Cards View -->
         <div v-if="viewMode === 'cards'" class="vocabulary-cards">
-          <div class="row">
+          <!-- Debug info - remove after fixing -->
+          <div v-if="paginatedVocabulary.length === 0" class="alert alert-info text-center m-3">
+            <h5>Debug Information</h5>
+            <p>No vocabulary cards to display.</p>
+            <p><strong>Total vocabulary:</strong> {{ allVocabulary.length }}</p>
+            <p><strong>Filtered vocabulary:</strong> {{ filteredVocabulary.length }}</p>
+            <p><strong>Current page:</strong> {{ currentPage }} of {{ totalPages }}</p>
+            <p><strong>Items per page:</strong> {{ itemsPerPage }}</p>
+            <p><strong>View mode:</strong> {{ viewMode }}</p>
+            <p><strong>Search term:</strong> "{{ searchTerm }}"</p>
+            <p><strong>Category filter:</strong> "{{ selectedCategoryFilter }}"</p>
+          </div>
+          
+          <div class="row" v-if="paginatedVocabulary.length > 0">
             <div class="col-12 col-sm-6 col-md-6 col-lg-6 col-xl-4 mb-4" v-for="word in paginatedVocabulary" :key="word.id">
               <VocabularyCard 
                 :word="word" 
@@ -412,12 +425,14 @@ export default {
 
     return {
       // Data
+      allVocabulary,
       currentCategory,
       allCategories,
       viewMode,
       searchTerm,
       selectedCategoryFilter,
       currentPage,
+      itemsPerPage,
       selectedWordDetail,
       
       // Computed
@@ -531,6 +546,23 @@ export default {
   .vocabulary-cards .col-12 {
     padding: 0 8px;
     margin-bottom: 16px !important;
+  }
+  
+  /* Debug and fix mobile vocabulary display */
+  .vocabulary-cards {
+    min-height: 200px !important;
+    background-color: rgba(255, 255, 255, 0.1) !important;
+    border: 1px dashed #ccc !important;
+  }
+  
+  .vocabulary-cards .row {
+    min-height: 100px !important;
+  }
+  
+  /* Ensure container section is visible */
+  section.py-4 {
+    min-height: 400px !important;
+    overflow: visible !important;
   }
 }
 </style>
