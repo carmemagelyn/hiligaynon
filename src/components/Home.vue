@@ -7,7 +7,7 @@
           <div class="col-lg-8">
             <h1 class="display-4 fw-bold mb-4">
               <Icon icon="mdi:flag" width="48" height="48" class="me-3" />
-              Learn Hiligaynon/Ilonggo
+              Learn Hiligaynon
             </h1>
             <p class="lead mb-4">
               Interactive vocabulary learning for Korean and Chinese students at Hua Siong College of Iloilo
@@ -17,9 +17,9 @@
             </p>
             
             <!-- Language Display -->
-            <div class="language-display mb-4 p-3 rounded" style="background: rgba(255, 255, 255, 0.2); backdrop-filter: blur(10px);">
+            <div class="language-display mb-4 p-3 rounded">
               <h5 class="mb-3">Learning in your language:</h5>
-              <div class="current-language d-inline-flex align-items-center p-2 rounded" style="background: rgba(255, 255, 255, 0.3);">
+              <div class="current-language d-inline-flex align-items-center p-2 rounded">
                 <span class="fs-3 me-2">{{ languageEmoji }}</span>
                 <span class="fw-bold">{{ languageText }}</span>
               </div>
