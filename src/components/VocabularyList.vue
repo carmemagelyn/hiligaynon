@@ -121,11 +121,23 @@
             </div>
             
             <div class="col-12 col-sm-6 col-md-6 col-lg-6 col-xl-4 mb-4" v-for="word in paginatedVocabulary" :key="word.id">
+              <!-- Test: Simple card instead of VocabularyCard component -->
+              <div class="card h-100" style="min-height: 200px; border: 2px solid red;">
+                <div class="card-body">
+                  <h5 class="card-title">{{ word.hiligaynon }}</h5>
+                  <p class="card-text">{{ word.english }}</p>
+                  <p class="card-text"><small>{{ selectedLanguage === 'korean' ? word.korean : word.chinese }}</small></p>
+                </div>
+              </div>
+              
+              <!-- Original component (commented for testing) -->
+              <!--
               <VocabularyCard 
                 :word="word" 
                 :selected-language="selectedLanguage"
                 @word-learned="markWordLearned"
                 @play-pronunciation="playPronunciation" />
+              -->
             </div>
           </div>
         </div>
