@@ -1,0 +1,40 @@
+{
+  "name": "hiligaynon-vocabulary-app",
+  "version": "1.0.0",
+  "description": "Interactive Hiligaynon/Ilonggo vocabulary learning app for Korean and Chinese students at Hua Siong College of Iloilo",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview"
+  },
+  "dependencies": {
+    "@aws-sdk/client-polly": "^3.916.0",
+    "@iconify/icons-mdi": "^1.2.48",
+    "@iconify/vue": "^5.0.0",
+    "axios": "^1.12.2",
+    "bootstrap": "^5.3.8",
+    "bootstrap-vue-next": "^0.40.6",
+    "vue": "^3.5.22",
+    "vue-router": "^4.6.2"
+  },
+  "devDependencies": {
+    "@vitejs/plugin-vue": "^6.0.1",
+    "vite": "^7.1.7",
+    "vite-plugin-vue-devtools": "^8.0.2"
+  },
+  "engines": {
+    "node": ">=6.9.0"
+  },
+  "keywords": [
+    "hiligaynon",
+    "ilonggo",
+    "vocabulary",
+    "learning",
+    "korean",
+    "chinese",
+    "education"
+  ],
+  "author": "Hua Siong College of Iloilo",
+  "license": "MIT"
+}

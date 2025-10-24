@@ -1,0 +1,765 @@
+/* Hua Siong College - Hiligaynon Learning App Main Styles */
+
+/* CSS Custom Properties - Hua Siong Color Palette */
+:root {
+  --white: #FFFFFF;
+  --rojo: #D92118;
+  --yinmn-blue: #495576;
+  
+  /* Variations for better UI */
+  --rojo-dark: #B01E17;
+  --rojo-light: #E63946;
+  --yinmn-blue-dark: #3A4660;
+  --yinmn-blue-light: #5A6B8C;
+  
+  /* Neutral colors */
+  --gray-50: #F8F9FA;
+  --gray-100: #E9ECEF;
+  --gray-200: #DEE2E6;
+  --gray-300: #CED4DA;
+  --gray-400: #ADB5BD;
+  --gray-500: #6C757D;
+  --gray-600: #495057;
+  --gray-700: #343A40;
+  --gray-800: #212529;
+  --gray-900: #000000;
+}
+
+/* Global Reset and Base Styles */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background: var(--white);
+  color: var(--gray-800);
+  line-height: 1.6;
+  min-height: 100vh;
+}
+
+/* Application Container */
+.app-container {
+  min-height: 100vh;
+  background: var(--white);
+}
+
+/* Hua Siong Color Utilities */
+.hua-siong-red { 
+  color: var(--rojo) !important; 
+}
+.hua-siong-blue { 
+  color: var(--yinmn-blue) !important; 
+}
+.hua-siong-white { 
+  color: var(--white) !important; 
+}
+
+/* Background Utilities */
+.bg-hua-siong-red { 
+  background-color: var(--rojo) !important; 
+}
+.bg-hua-siong-blue { 
+  background-color: var(--yinmn-blue) !important; 
+}
+.bg-hua-siong-white { 
+  background-color: var(--white) !important; 
+}
+
+/* Bootstrap-style Background Classes */
+.bg-rojo {
+  background-color: var(--rojo) !important;
+}
+.bg-yinmn-blue {
+  background-color: var(--yinmn-blue) !important;
+}
+
+/* Icon Color Classes */
+.text-rojo {
+  color: var(--rojo) !important;
+}
+.text-yinmn-blue {
+  color: var(--yinmn-blue) !important;
+}
+
+.icon-rojo {
+  color: var(--rojo) !important;
+}
+.icon-yinmn-blue {
+  color: var(--yinmn-blue) !important;
+}
+
+/* Navigation Styles */
+.navbar-hua-siong {
+  background: var(--yinmn-blue) !important;
+  border-bottom: 3px solid var(--rojo);
+}
+
+.navbar-brand {
+  color: var(--white) !important;
+  font-weight: 700 !important;
+  font-size: 1.5rem !important;
+}
+
+.nav-link {
+  color: var(--white) !important;
+  font-weight: 500;
+  transition: all 0.3s ease;
+}
+
+.nav-link:hover {
+  color: var(--gray-200) !important;
+  transform: translateY(-1px);
+}
+
+.nav-link.router-link-active {
+  color: var(--white) !important;
+  background: var(--rojo);
+  border-radius: 6px;
+  padding: 8px 16px !important;
+  font-weight: 700;
+}
+
+/* Button Styles */
+.btn-hua-siong-primary {
+  background: var(--rojo);
+  border: 2px solid var(--rojo);
+  color: var(--white);
+  font-weight: 600;
+  padding: 10px 20px;
+  border-radius: 8px;
+  transition: all 0.3s ease;
+}
+
+.btn-hua-siong-primary:hover {
+  background: var(--rojo-dark);
+  border-color: var(--rojo-dark);
+  color: var(--white);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(217, 33, 24, 0.3);
+}
+
+/* Bootstrap-style Button Classes */
+.btn-rojo {
+  background: var(--rojo);
+  border: 1px solid var(--rojo);
+  color: var(--white);
+}
+
+.btn-rojo:hover {
+  background: var(--rojo-dark);
+  border-color: var(--rojo-dark);
+  color: var(--white);
+}
+
+.btn-yinmn-blue {
+  background: var(--yinmn-blue);
+  border: 1px solid var(--yinmn-blue);
+  color: var(--white);
+}
+
+.btn-yinmn-blue:hover {
+  background: var(--yinmn-blue-dark);
+  border-color: var(--yinmn-blue-dark);
+  color: var(--white);
+}
+
+.btn-outline-rojo {
+  background: transparent;
+  border: 1px solid var(--rojo);
+  color: var(--rojo);
+}
+
+.btn-outline-rojo:hover {
+  background: var(--rojo);
+  border-color: var(--rojo);
+  color: var(--white);
+}
+
+.btn-outline-yinmn-blue {
+  background: transparent;
+  border: 1px solid var(--yinmn-blue);
+  color: var(--yinmn-blue);
+}
+
+.btn-outline-yinmn-blue:hover {
+  background: var(--yinmn-blue);
+  border-color: var(--yinmn-blue);
+  color: var(--white);
+}
+
+.btn-white-inactive {
+  background: var(--white);
+  border: 1px solid var(--gray-300);
+  color: var(--gray-600);
+}
+
+.btn-white-inactive:hover {
+  background: var(--gray-100);
+  border-color: var(--gray-400);
+  color: var(--gray-700);
+}
+
+.btn-hua-siong-outline-secondary {
+  background: var(--yinmn-blue);
+  border: 2px solid var(--yinmn-blue);
+  color: var(--white);
+  font-weight: 600;
+  padding: 10px 20px;
+  border-radius: 8px;
+  transition: all 0.3s ease;
+}
+
+.btn-hua-siong-secondary:hover {
+  background: var(--yinmn-blue-dark);
+  border-color: var(--yinmn-blue-dark);
+  color: var(--white);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(73, 85, 118, 0.3);
+}
+
+.btn-hua-siong-outline-primary {
+  background: transparent;
+  border: 2px solid var(--rojo);
+  color: var(--rojo);
+  font-weight: 600;
+  padding: 10px 20px;
+  border-radius: 8px;
+  transition: all 0.3s ease;
+}
+
+.btn-hua-siong-outline-primary:hover {
+  background: var(--rojo);
+  color: var(--white);
+  transform: translateY(-2px);
+}
+
+.btn-hua-siong-outline-secondary {
+  background: transparent;
+  border: 2px solid var(--yinmn-blue);
+  color: var(--yinmn-blue);
+  font-weight: 600;
+  padding: 10px 20px;
+  border-radius: 8px;
+  transition: all 0.3s ease;
+}
+
+.btn-hua-siong-outline-secondary:hover {
+  background: var(--yinmn-blue);
+  color: var(--white);
+  transform: translateY(-2px);
+}
+
+/* Language Selection Styles */
+.language-tabs {
+  background: var(--white);
+  border: 2px solid var(--gray-200);
+  border-radius: 15px;
+  padding: 20px;
+  margin-bottom: 20px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+}
+
+.language-tab {
+  border: 2px solid var(--gray-300);
+  border-radius: 10px;
+  padding: 15px 25px;
+  margin: 0 10px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--white);
+  color: var(--gray-700);
+  font-weight: 600;
+}
+
+.language-tab:hover {
+  background: var(--gray-50);
+  border-color: var(--yinmn-blue);
+  transform: translateY(-2px);
+}
+
+.language-tab.active {
+  background: var(--yinmn-blue);
+  color: var(--white);
+  border-color: var(--rojo);
+  box-shadow: 0 4px 15px rgba(73, 85, 118, 0.3);
+}
+
+/* Hero Section */
+.hero-section {
+  background: var(--yinmn-blue);
+  color: var(--white);
+  min-height: 60vh;
+  display: flex;
+  align-items: center;
+  position: relative;
+}
+
+.hero-section::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: var(--rojo);
+  clip-path: polygon(0 0, 100% 0, 85% 100%, 0% 100%);
+  opacity: 0.1;
+}
+
+/* Card Components */
+.card-hua-siong {
+  background: var(--white);
+  border: 2px solid var(--gray-200);
+  border-radius: 12px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease;
+}
+
+.card-hua-siong:hover {
+  border-color: var(--rojo);
+  box-shadow: 0 4px 16px rgba(217, 33, 24, 0.15);
+  transform: translateY(-2px);
+}
+
+.card-selected {
+  background: var(--rojo);
+  border: 2px solid var(--rojo);
+  color: var(--white);
+  box-shadow: 0 4px 16px rgba(217, 33, 24, 0.25);
+}
+
+.card-header-hua-siong {
+  background: var(--yinmn-blue);
+  color: var(--white);
+  border-bottom: 3px solid var(--rojo);
+  font-weight: 700;
+  padding: 15px 20px;
+}
+
+/* Vocabulary Card Styles */
+.vocabulary-card {
+  background: var(--white);
+  border: 2px solid var(--gray-200);
+  border-radius: 15px;
+  transition: all 0.3s ease;
+  overflow: hidden;
+}
+
+.vocabulary-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+  border-color: var(--yinmn-blue);
+}
+
+.vocabulary-card.learned {
+  border-color: var(--rojo);
+  box-shadow: 0 0 20px rgba(217, 33, 24, 0.2);
+}
+
+/* Category Cards */
+.category-card {
+  background: var(--yinmn-blue);
+  border-radius: 15px;
+  padding: 25px;
+  text-align: center;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  border: 3px solid transparent;
+  color: var(--white);
+  font-weight: 700;
+}
+
+.category-card:hover {
+  transform: scale(1.05);
+  border-color: var(--rojo);
+  box-shadow: 0 8px 25px rgba(217, 33, 24, 0.3);
+}
+
+.category-card.food {
+  background: var(--rojo);
+}
+
+.category-card.food:hover {
+  border-color: var(--yinmn-blue);
+  box-shadow: 0 8px 25px rgba(73, 85, 118, 0.3);
+}
+
+/* Pronunciation Button */
+.pronunciation-btn {
+  background: var(--white);
+  border: 2px solid var(--rojo);
+  border-radius: 50%;
+  width: 45px;
+  height: 45px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--rojo);
+  cursor: pointer;
+  transition: all 0.3s ease;
+  font-size: 1.2rem;
+}
+
+.pronunciation-btn:hover {
+  background: var(--rojo);
+  color: var(--white);
+  transform: scale(1.15);
+  box-shadow: 0 4px 12px rgba(217, 33, 24, 0.4);
+}
+
+/* Progress Indicators */
+.progress-hua-siong {
+  background: var(--gray-200);
+  border-radius: 10px;
+  height: 12px;
+  overflow: hidden;
+}
+
+.progress-bar-hua-siong {
+  background: var(--rojo);
+  height: 100%;
+  border-radius: 10px;
+  transition: width 0.6s ease;
+}
+
+.progress-bar-hua-siong.secondary {
+  background: var(--yinmn-blue);
+}
+
+.progress-circle {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  background: var(--gray-200);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--yinmn-blue);
+  font-weight: bold;
+  position: relative;
+  border: 4px solid var(--rojo);
+}
+
+/* Alert Styles */
+.alert-hua-siong-success {
+  background: var(--white);
+  border: 2px solid var(--rojo);
+  border-left: 6px solid var(--rojo);
+  color: var(--gray-800);
+  border-radius: 8px;
+  padding: 15px 20px;
+}
+
+.alert-hua-siong-info {
+  background: var(--white);
+  border: 2px solid var(--yinmn-blue);
+  border-left: 6px solid var(--yinmn-blue);
+  color: var(--gray-800);
+  border-radius: 8px;
+  padding: 15px 20px;
+}
+
+/* Badge Styles */
+.badge-hua-siong-primary {
+  background: var(--rojo);
+  color: var(--white);
+  font-weight: 600;
+  padding: 8px 12px;
+  border-radius: 6px;
+}
+
+.badge-hua-siong-secondary {
+  background: var(--yinmn-blue);
+  color: var(--white);
+  font-weight: 600;
+  padding: 8px 12px;
+  border-radius: 6px;
+}
+
+/* Form Styles */
+.form-control-hua-siong {
+  border: 2px solid var(--gray-300);
+  border-radius: 8px;
+  padding: 12px 15px;
+  font-size: 1rem;
+  transition: all 0.3s ease;
+}
+
+.form-control-hua-siong:focus {
+  border-color: var(--yinmn-blue);
+  box-shadow: 0 0 0 0.2rem rgba(73, 85, 118, 0.25);
+  outline: none;
+}
+
+.form-select-hua-siong {
+  border: 2px solid var(--gray-300);
+  border-radius: 8px;
+  padding: 12px 15px;
+  font-size: 1rem;
+  background: var(--white);
+  transition: all 0.3s ease;
+}
+
+.form-select-hua-siong:focus {
+  border-color: var(--yinmn-blue);
+  box-shadow: 0 0 0 0.2rem rgba(73, 85, 118, 0.25);
+  outline: none;
+}
+
+/* Modal Styles */
+.modal-hua-siong .modal-header {
+  background: var(--yinmn-blue);
+  color: var(--white);
+  border-bottom: 3px solid var(--rojo);
+}
+
+.modal-hua-siong .modal-body {
+  background: var(--white);
+  padding: 30px;
+}
+
+.modal-hua-siong .modal-footer {
+  background: var(--gray-50);
+  border-top: 2px solid var(--gray-200);
+}
+
+/* Table Styles */
+.table-hua-siong {
+  background: var(--white);
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+}
+
+.table-hua-siong th {
+  background: var(--yinmn-blue);
+  color: var(--white);
+  font-weight: 700;
+  padding: 15px;
+  border: none;
+}
+
+.table-hua-siong td {
+  padding: 12px 15px;
+  border-bottom: 1px solid var(--gray-200);
+  transition: background-color 0.3s ease;
+}
+
+.table-hua-siong tr:hover td {
+  background: var(--gray-50);
+}
+
+/* Quiz Styles */
+.quiz-option {
+  background: var(--white);
+  border: 2px solid var(--gray-300);
+  border-radius: 10px;
+  padding: 15px 20px;
+  margin-bottom: 10px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  text-align: left;
+}
+
+.quiz-option:hover {
+  border-color: var(--yinmn-blue);
+  background: var(--gray-50);
+  transform: translateX(5px);
+}
+
+.quiz-option.selected {
+  border-color: var(--rojo);
+  background: var(--rojo);
+  color: var(--white);
+}
+
+.quiz-option.correct {
+  border-color: var(--rojo);
+  background: var(--rojo);
+  color: var(--white);
+}
+
+.quiz-option.incorrect {
+  border-color: var(--gray-400);
+  background: var(--gray-400);
+  color: var(--white);
+  opacity: 0.7;
+}
+
+/* Statistics Cards */
+.stat-card {
+  background: var(--white);
+  border: 2px solid var(--gray-200);
+  border-radius: 15px;
+  padding: 25px;
+  text-align: center;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+}
+
+.stat-card:hover {
+  transform: translateY(-5px);
+  border-color: var(--yinmn-blue);
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+}
+
+.stat-icon {
+  font-size: 3rem;
+  margin-bottom: 15px;
+}
+
+.stat-number {
+  color: var(--rojo);
+  font-weight: 900;
+  font-size: 2.5rem;
+  margin-bottom: 10px;
+  line-height: 1;
+}
+
+.stat-label {
+  color: var(--gray-600);
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  margin-bottom: 0;
+}
+
+/* Logo Styles */
+.hua-siong-logo {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.logo-image {
+  width: 120px;
+  height: 120px;
+  transition: transform 0.3s ease;
+  filter: drop-shadow(0 4px 15px rgba(0, 0, 0, 0.15));
+  border: 3px solid var(--rojo);
+  border-radius: 50%;
+  padding: 10px;
+  background: var(--white);
+}
+
+.logo-image:hover {
+  transform: scale(1.08);
+  border-color: var(--yinmn-blue);
+}
+
+/* Animation Classes */
+.fade-enter-active, .fade-leave-active {
+  transition: opacity 0.5s ease;
+}
+
+.fade-enter-from, .fade-leave-to {
+  opacity: 0;
+}
+
+.slide-enter-active, .slide-leave-active {
+  transition: transform 0.3s ease;
+}
+
+.slide-enter-from {
+  transform: translateX(-100%);
+}
+
+.slide-leave-to {
+  transform: translateX(100%);
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .hero-section {
+    min-height: 50vh;
+    text-align: center;
+  }
+  
+  .language-tab {
+    margin: 5px 0;
+    padding: 12px 20px;
+  }
+  
+  .category-card {
+    padding: 20px;
+    margin-bottom: 15px;
+  }
+  
+  .stat-card {
+    margin-bottom: 20px;
+  }
+  
+  .logo-image {
+    width: 80px;
+    height: 80px;
+  }
+  
+  .pronunciation-btn {
+    width: 35px;
+    height: 35px;
+    font-size: 1rem;
+  }
+}
+
+@media (max-width: 576px) {
+  .navbar-brand {
+    font-size: 1.2rem !important;
+  }
+  
+  .hero-section {
+    min-height: 40vh;
+    padding: 2rem 0;
+  }
+  
+  .btn-hua-siong-primary,
+  .btn-hua-siong-secondary {
+    
+    width: 100%;
+    margin-bottom: 10px;
+  }
+}
+
+/* Utility Classes */
+.cursor-pointer {
+  cursor: pointer;
+}
+
+.text-hua-siong-primary {
+  color: var(--rojo) !important;
+}
+
+.text-hua-siong-secondary {
+  color: var(--yinmn-blue) !important;
+}
+
+.border-hua-siong-primary {
+  border-color: var(--rojo) !important;
+}
+
+.border-hua-siong-secondary {
+  border-color: var(--yinmn-blue) !important;
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--gray-100);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--yinmn-blue);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--rojo);
+}
