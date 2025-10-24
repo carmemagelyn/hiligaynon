@@ -719,6 +719,18 @@ body {
     opacity: 1 !important;
     display: inline-flex !important;
   }
+  
+  /* Ensure vocabulary cards show full height on mobile */
+  .vocabulary-card-container {
+    height: auto !important;
+    min-height: 480px !important;
+  }
+  
+  .vocabulary-card .card-face {
+    overflow: visible !important;
+    height: auto !important;
+    min-height: 480px !important;
+  }
 }
 
 @media (max-width: 576px) {
@@ -786,6 +798,26 @@ body {
   .vocabulary-card .card-footer .btn {
     min-height: 48px !important;
     font-weight: 600 !important;
+  }
+  
+  /* Force vocabulary cards to show complete content */
+  .vocabulary-card-container {
+    min-height: 500px !important;
+  }
+  
+  .vocabulary-card .card {
+    height: 100% !important;
+    display: flex !important;
+    flex-direction: column !important;
+  }
+  
+  .vocabulary-card .card-body {
+    flex: 1 !important;
+  }
+  
+  .vocabulary-card .card-footer {
+    margin-top: auto !important;
+    flex-shrink: 0 !important;
   }
   
   .logo-image {

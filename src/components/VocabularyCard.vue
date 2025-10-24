@@ -357,7 +357,8 @@ export default {
 
 @media (max-width: 768px) {
   .vocabulary-card-container {
-    height: 350px;
+    height: auto;
+    min-height: 480px;
   }
   
   .vocabulary-image-container {
@@ -398,6 +399,28 @@ export default {
     visibility: visible !important;
     opacity: 1 !important;
     display: flex !important;
+  }
+  
+  /* Ensure card face shows full content */
+  .card-face {
+    overflow: visible !important;
+  }
+  
+  .card-face .card {
+    height: auto !important;
+    min-height: 100%;
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .card-body {
+    flex: 1;
+    padding-bottom: 0 !important;
+  }
+  
+  .card-footer-mobile {
+    margin-top: auto;
+    flex-shrink: 0;
   }
 }
 
