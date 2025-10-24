@@ -65,12 +65,12 @@
             </div>
           </div>
           
-          <div class="card-footer bg-white border-top d-flex justify-content-between align-items-center p-3">
-            <button class="btn btn-yinmn-blue btn-sm text-white fw-bold" @click.stop="flipCard">
+          <div class="card-footer bg-white border-top d-flex justify-content-between align-items-center p-3 card-footer-mobile">
+            <button class="btn btn-yinmn-blue btn-sm text-white fw-bold mobile-button" @click.stop="flipCard">
               <Icon icon="mdi:book-open-variant" width="16" height="16" class="me-1" />
               Example
             </button>
-            <button class="btn btn-sm fw-bold" 
+            <button class="btn btn-sm fw-bold mobile-button" 
                     :class="isLearned ? 'btn-rojo text-white' : 'btn-outline-rojo'"
                     @click.stop="toggleLearned">
               <Icon :icon="isLearned ? 'mdi:check' : 'mdi:plus'" width="16" height="16" class="me-1" />
@@ -367,6 +367,51 @@ export default {
   .example-text {
     font-size: 0.9rem;
     padding: 8px;
+  }
+  
+  /* Make buttons more visible and accessible on mobile */
+  .card-footer-mobile {
+    padding: 12px 16px !important;
+    gap: 8px;
+    flex-wrap: wrap;
+  }
+  
+  .mobile-button {
+    font-size: 0.875rem !important;
+    padding: 10px 14px !important;
+    min-height: 44px !important;
+    min-width: 120px;
+    flex: 1;
+    white-space: nowrap;
+    display: flex !important;
+    align-items: center;
+    justify-content: center;
+    border-width: 2px !important;
+  }
+  
+  .mobile-button .me-1 {
+    margin-right: 6px !important;
+  }
+  
+  /* Ensure buttons are always visible */
+  .card-footer-mobile .btn {
+    visibility: visible !important;
+    opacity: 1 !important;
+    display: flex !important;
+  }
+}
+
+/* Additional mobile styles for very small screens */
+@media (max-width: 480px) {
+  .card-footer-mobile {
+    flex-direction: column !important;
+    gap: 8px !important;
+  }
+  
+  .mobile-button {
+    width: 100% !important;
+    flex: none !important;
+    margin-bottom: 4px;
   }
 }
 

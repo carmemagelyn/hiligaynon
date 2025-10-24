@@ -7,26 +7,34 @@
           🇵🇭 Hiligaynon Learning
         </router-link>
         
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+        <button 
+          class="navbar-toggler" 
+          type="button" 
+          @click="toggleMobileMenu"
+          data-bs-toggle="collapse" 
+          data-bs-target="#navbarNav"
+          :aria-expanded="mobileMenuOpen"
+          aria-controls="navbarNav"
+        >
           <span class="navbar-toggler-icon"></span>
         </button>
         
-        <div class="collapse navbar-collapse" id="navbarNav">
+        <div class="collapse navbar-collapse" id="navbarNav" :class="{ 'show': mobileMenuOpen }">
           <ul class="navbar-nav me-auto">
             <li class="nav-item">
-              <router-link to="/" class="nav-link">Home</router-link>
+              <router-link to="/" class="nav-link" @click="mobileMenuOpen = false">Home</router-link>
             </li>
             <li class="nav-item">
-              <router-link to="/categories" class="nav-link">Categories</router-link>
+              <router-link to="/categories" class="nav-link" @click="mobileMenuOpen = false">Categories</router-link>
             </li>
             <li class="nav-item">
-              <router-link to="/vocabulary" class="nav-link">Vocabulary</router-link>
+              <router-link to="/vocabulary" class="nav-link" @click="mobileMenuOpen = false">Vocabulary</router-link>
             </li>
             <li class="nav-item">
-              <router-link to="/quiz" class="nav-link">Quiz</router-link>
+              <router-link to="/quiz" class="nav-link" @click="mobileMenuOpen = false">Quiz</router-link>
             </li>
             <li class="nav-item">
-              <router-link to="/progress" class="nav-link">Progress</router-link>
+              <router-link to="/progress" class="nav-link" @click="mobileMenuOpen = false">Progress</router-link>
             </li>
           </ul>
           
@@ -112,10 +120,17 @@ export default {
   setup() {
     const selectedLanguage = ref('korean')
     const showLanguageModal = ref(false)
+    const mobileMenuOpen = ref(false)
 
     const setLanguage = (language) => {
       selectedLanguage.value = language
       localStorage.setItem('hiligaynon_preferred_language', language)
+      // Close mobile menu when language is selected
+      mobileMenuOpen.value = false
+    }
+
+    const toggleMobileMenu = () => {
+      mobileMenuOpen.value = !mobileMenuOpen.value
     }
 
     const selectInitialLanguage = (language) => {
@@ -135,7 +150,9 @@ export default {
     return {
       selectedLanguage,
       showLanguageModal,
+      mobileMenuOpen,
       setLanguage,
+      toggleMobileMenu,
       selectInitialLanguage
     }
   }
@@ -173,5 +190,46 @@ export default {
 .nav-link.router-link-active {
   color: #fcd116 !important;
   font-weight: bold;
+}
+
+/* Mobile navigation improvements */
+@media (max-width: 991.98px) {
+  .navbar-collapse {
+    background: rgba(0, 0, 0, 0.95);
+    border-radius: 8px;
+    margin-top: 10px;
+    padding: 1rem;
+  }
+  
+  .navbar-nav {
+    margin-bottom: 1rem;
+  }
+  
+  .navbar-nav .nav-link {
+    padding: 0.75rem 1rem;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    font-size: 1.1rem;
+  }
+  
+  .navbar-nav .nav-link:last-child {
+    border-bottom: none;
+  }
+  
+  /* Language buttons in mobile */
+  .d-flex.align-items-center {
+    flex-direction: column;
+    gap: 0.5rem;
+    align-items: stretch !important;
+  }
+  
+  .d-flex.align-items-center .btn {
+    width: 100%;
+    margin: 0 !important;
+  }
+  
+  .d-flex.align-items-center span {
+    margin-bottom: 0.5rem;
+    margin-right: 0 !important;
+  }
 }
 </style>

@@ -6,8 +6,9 @@ import App from './App.vue'
 import speechService from './services/speechService.js'
 import { SPEECH_CONFIG } from './config/speechConfig.js'
 
-// Import Bootstrap CSS
+// Import Bootstrap CSS and JS
 import 'bootstrap/dist/css/bootstrap.min.css'
+import 'bootstrap/dist/js/bootstrap.bundle.min.js'
 import 'bootstrap-vue-next/dist/bootstrap-vue-next.css'
 import './main.css'
 
