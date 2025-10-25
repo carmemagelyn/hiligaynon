@@ -3,77 +3,54 @@
     <div class="vocabulary-card" :class="{ flipped: isFlipped, learned: isLearned }">
       <!-- Front Side -->
       <div class="card-face card-front">
-        <div class="card h-100 card-hua-siong">
-          <div class="card-header card-header-hua-siong d-flex justify-content-between align-items-center">
-            <span class="fw-bold">{{ word.hiligaynon }}</span>
-                        <button class="pronunciation-btn" 
-                    @click.stop="playPronunciation">
-              <Icon icon="mdi:volume-high" width="16" height="16" />
+        <div class="card">
+          <!-- Card Header -->
+          <div class="card-header">
+            <h6 class="card-title">{{ word.hiligaynon || 'Loading...' }}</h6>
+            <button class="pronunciation-btn" @click.stop="playPronunciation" title="Play pronunciation">
+              🔊
             </button>
           </div>
           
-          <div class="card-body p-3">
+          <!-- Card Body -->
+          <div class="card-body">
             <!-- Image Section -->
-            <div class="vocabulary-image-container mb-3">
-              <!-- Actual Image -->
-              <div v-if="word.hasImage && word.image" class="vocabulary-image">
-                <img 
-                  :src="word.image.thumbnailUrl || word.image.url" 
-                  :alt="word.image.title || word.english"
-                  class="vocabulary-img"
-                  @error="handleImageError"
-                  @load="handleImageLoad"
-                />
-                <div class="image-overlay d-flex align-items-end">
-                  <small class="text-white bg-dark bg-opacity-75 px-2 py-1 rounded">
-                    {{ word.english }}
-                  </small>
-                </div>
-              </div>
-              
-              <!-- Loading State -->
-              <div v-else-if="isLoadingImage" class="vocabulary-image-placeholder d-flex align-items-center justify-content-center">
-                <div class="text-center">
-                  <div class="spinner-border spinner-border-sm text-primary mb-2" role="status">
-                    <span class="visually-hidden">Loading image...</span>
-                  </div>
-                  <small class="text-muted d-block">Loading image...</small>
-                </div>
-              </div>
-              
-              <!-- Placeholder -->
-              <div v-else class="vocabulary-image-placeholder">
-                <div class="text-center">
-                  <div class="image-icon">
-                    <Icon icon="mdi:image" width="24" height="24" class="text-muted" />
-                  </div>
-                  <small class="text-muted d-block">{{ word.image_description || 'No image' }}</small>
-                </div>
-              </div>
+            <div class="image-section" v-if="word.hasImage && word.image">
+              <img 
+                :src="word.image.thumbnailUrl || word.image.url" 
+                :alt="word.image.title || word.english"
+                class="card-image"
+                @error="handleImageError"
+              />
             </div>
             
-            <!-- Pronunciation Guide -->
-            <div class="pronunciation-guide mb-3">
-              <small class="text-muted d-block mb-1">Pronunciation:</small>
-              <code class="pronunciation-text">{{ word.pronunciation }}</code>
-            </div>
-            
-            <!-- Translation -->
-            <div class="translation mb-3">
-              <h6 class="translation-text">{{ getTranslation() }}</h6>
-              <small class="text-muted">{{ word.english }}</small>
+            <!-- Content Section -->
+            <div class="content-section">
+              <!-- Pronunciation -->
+              <div class="pronunciation" v-if="word.pronunciation">
+                <small>Pronunciation:</small>
+                <code class="pronunciation-text">{{ word.pronunciation }}</code>
+              </div>
+              
+              <!-- Translation -->
+              <div class="translation">
+                <div class="translation-primary">{{ getTranslation() || 'Loading...' }}</div>
+                <div class="translation-secondary">{{ word.english || 'Loading English...' }}</div>
+              </div>
             </div>
           </div>
           
-          <div class="card-footer bg-white border-top d-flex justify-content-between align-items-center p-3 card-footer-mobile">
-            <button class="btn btn-yinmn-blue btn-sm text-white fw-bold mobile-button" @click.stop="flipCard">
-              <Icon icon="mdi:book-open-variant" width="16" height="16" class="me-1" />
+          <!-- Card Footer -->
+          <div class="card-footer">
+            <button class="btn btn-example" @click.stop="flipCard">
+              <Icon icon="mdi:book-open-variant" width="14" height="14" />
               Example
             </button>
-            <button class="btn btn-sm fw-bold mobile-button" 
-                    :class="isLearned ? 'btn-rojo text-white' : 'btn-outline-rojo'"
-                    @click.stop="toggleLearned">
-              <Icon :icon="isLearned ? 'mdi:check' : 'mdi:plus'" width="16" height="16" class="me-1" />
+            <button 
+              class="btn btn-learn" 
+              :class="{ learned: isLearned }"
+              @click.stop="toggleLearned">
+              <Icon :icon="isLearned ? 'mdi:check' : 'mdi:plus'" width="14" height="14" />
               {{ isLearned ? 'Learned' : 'Learn' }}
             </button>
           </div>
@@ -82,50 +59,47 @@
 
       <!-- Back Side -->
       <div class="card-face card-back">
-        <div class="card h-100 card-hua-siong">
-          <div class="card-header card-header-hua-siong d-flex justify-content-between align-items-center">
-            <span class="fw-bold">Example Sentence</span>
-            <button class="btn btn-sm btn-hua-siong-outline-primary" @click.stop="flipCard">
-              <Icon icon="mdi:arrow-left" width="16" height="16" class="me-1" />
+        <div class="card">
+          <!-- Card Header -->
+          <div class="card-header">
+            <h6 class="card-title">Example Sentence</h6>
+            <button class="back-btn" @click.stop="flipCard">
+              <Icon icon="mdi:arrow-left" width="14" height="14" />
               Back
             </button>
           </div>
           
-          <div class="card-body p-3">
-            <!-- Hiligaynon Example -->
-            <div class="example-section mb-4">
-              <div class="d-flex justify-content-between align-items-center mb-2">
-                <label class="small text-muted fw-bold">HILIGAYNON:</label>
-                <button class="pronunciation-btn" 
-                        @click.stop="playSentence(word.example_sentence.hiligaynon)">
-                  <Icon icon="mdi:volume-high" width="16" height="16" />
-                </button>
+          <!-- Card Body -->
+          <div class="card-body">
+            <div class="examples">
+              <!-- Hiligaynon Example -->
+              <div class="example-item">
+                <div class="example-header">
+                  <small>HILIGAYNON:</small>
+                  <button class="pronunciation-btn small" @click.stop="playSentence(word.example_sentence.hiligaynon)">
+                    🔊
+                  </button>
+                </div>
+                <div class="example-text">"{{ word.example_sentence.hiligaynon }}"</div>
               </div>
-              <p class="example-text fw-bold text-primary mb-3">
-                "{{ word.example_sentence.hiligaynon }}"
-              </p>
-            </div>
-            
-            <!-- Translation Example -->
-            <div class="example-section mb-4">
-              <label class="small text-muted fw-bold">{{ selectedLanguage.toUpperCase() }}:</label>
-              <p class="example-text mb-2">
-                "{{ getSentenceTranslation() }}"
-              </p>
-            </div>
-            
-            <!-- English Example -->
-            <div class="example-section mb-3">
-              <label class="small text-muted fw-bold">ENGLISH:</label>
-              <p class="example-text mb-2">
-                "{{ word.example_sentence.english }}"
-              </p>
-            </div>
-            
-            <!-- Usage Context -->
-            <div class="usage-context">
-              <label class="small text-muted fw-bold">USAGE:</label>
-              <p class="small text-muted mb-0">{{ word.usage }}</p>
+              
+              <!-- Translation Example -->
+              <div class="example-item">
+                <small>{{ selectedLanguage === 'korean' ? 'KOREAN' : 'CHINESE' }}:</small>
+                <div class="example-text">"{{ getSentenceTranslation() }}"</div>
+              </div>
+              
+              <!-- English Example -->
+              <div class="example-item">
+                <small>ENGLISH:</small>
+                <div class="example-text">"{{ word.example_sentence.english }}"</div>
+              </div>
+              
+              <!-- Usage -->
+              <div class="usage-item">
+                <small>USAGE:</small>
+                <div class="usage-text">{{ word.usage }}</div>
+              </div>
             </div>
           </div>
         </div>
@@ -167,6 +141,7 @@ export default {
 
     const flipCard = () => {
       isFlipped.value = !isFlipped.value
+      console.log('Card flipped:', isFlipped.value)
     }
 
     const toggleLearned = () => {
@@ -224,297 +199,510 @@ export default {
 </script>
 
 <style scoped>
+/* ===== BASE STYLES ===== */
+
+/* Container with perspective for 3D flip */
 .vocabulary-card-container {
   width: 100%;
-  height: auto;
-  min-height: 280px;
+  height: 550px;
+  perspective: 1000px;
+  animation: fadeInUp 0.6s ease-out;
 }
 
+/* Vocabulary Card - Main flip container */
 .vocabulary-card {
   position: relative;
   width: 100%;
   height: 100%;
+  transform-style: preserve-3d;
+  transition: transform 0.6s ease;
   cursor: pointer;
 }
 
-.vocabulary-card.learned {
-  box-shadow: 0 0 20px rgba(40, 167, 69, 0.3);
+.vocabulary-card.flipped {
+  transform: rotateY(180deg);
 }
 
+/* Card Faces - Front and Back */
 .card-face {
+  position: absolute;
+  top: 0;
+  left: 0;
   width: 100%;
   height: 100%;
-  border-radius: 15px;
-  overflow: hidden;
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+  border-radius: 12px;
+}
+
+.card-front {
+  z-index: 2;
+  transform: rotateY(0deg);
 }
 
 .card-back {
-  display: none;
+  transform: rotateY(180deg);
 }
 
-.vocabulary-card.flipped .card-front {
-  display: none;
-}
-
-.vocabulary-card.flipped .card-back {
-  display: block;
-}
-
-.vocabulary-image-container {
-  height: 350px;
-}
-
-.vocabulary-image {
-  position: relative;
+/* Card Structure */
+.card {
   width: 100%;
   height: 100%;
-  border-radius: 10px;
+  background: white;
+  border: 2px solid #e2e8f0;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  display: flex;
+  flex-direction: column;
   overflow: hidden;
+  transition: all 0.3s ease;
 }
 
-.vocabulary-img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  object-position: center;
-  transition: transform 0.3s ease;
+.card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+  border-color: #007bff;
 }
 
-.vocabulary-img:hover {
-  transform: scale(1.05);
-}
+/* ===== CARD HEADER ===== */
 
-.image-overlay {
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  padding: 8px;
-  background: linear-gradient(transparent, rgba(0, 0, 0, 0.7));
-}
-
-.vocabulary-image-placeholder {
-  width: 100%;
-  height: 100%;
+.card-header {
+  flex-shrink: 0;
   background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
-  border-radius: 10px;
-  border: 2px dashed #dee2e6;
+  border-bottom: 1px solid #dee2e6;
+  padding: 0.75rem 1rem;
+  min-height: 60px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.75rem;
+}
+
+.card-title {
+  flex: 1;
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: #2d3748;
+  margin: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.pronunciation-btn {
+  flex-shrink: 0;
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  border: 2px solid #007bff;
+  background: white;
+  color: #007bff;
+  font-size: 14px;
   display: flex;
   align-items: center;
   justify-content: center;
-  text-align: center;
+  cursor: pointer;
+  transition: all 0.2s ease;
 }
 
-.image-icon {
-  font-size: 1.5rem;
-  opacity: 0.6;
-  margin-bottom: 4px;
+.pronunciation-btn:hover {
+  background: #007bff;
+  color: white;
+  transform: scale(1.1);
+}
+
+.pronunciation-btn.small {
+  width: 28px;
+  height: 28px;
+  font-size: 12px;
+}
+
+.back-btn {
+  padding: 0.5rem 1rem;
+  background: #f3f4f6;
+  border: 1px solid #d1d5db;
+  border-radius: 8px;
+  color: #374151;
+  font-size: 0.875rem;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 0.375rem;
+  transition: all 0.2s ease;
+}
+
+.back-btn:hover {
+  background: #e5e7eb;
+}
+
+/* ===== CARD BODY ===== */
+
+.card-body {
+  flex: 1;
+  padding: 1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  overflow: hidden;
+}
+
+/* Image Section */
+.image-section {
+  flex-shrink: 0;
+}
+
+.card-image {
+  width: 100%;
+  height: 100px;
+  object-fit: cover;
+  border-radius: 8px;
+  border: 1px solid #e2e8f0;
+  display: block;
+}
+
+/* Content Section */
+.content-section {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  text-align: center;
+  gap: 0.75rem;
+}
+
+.pronunciation {
+  margin-bottom: 0.5rem;
+}
+
+.pronunciation small {
+  display: block;
+  color: #6b7280;
+  font-size: 0.75rem;
+  margin-bottom: 0.25rem;
 }
 
 .pronunciation-text {
   background: #e3f2fd;
   color: #1976d2;
-  padding: 4px 8px;
-  border-radius: 4px;
-  font-size: 0.9rem;
+  padding: 0.25rem 0.5rem;
+  border-radius: 6px;
+  font-size: 0.875rem;
+  font-family: 'Courier New', monospace;
 }
 
-.translation-text {
-  color: #2e7d32;
-  margin-bottom: 0.5rem;
+.translation {
+  text-align: center;
 }
 
-.example-text {
+.translation-primary {
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: #059669;
+  margin-bottom: 0.25rem;
+  line-height: 1.3;
+}
+
+.translation-secondary {
   font-size: 1rem;
-  line-height: 1.4;
-  padding: 10px;
-  background: #f8f9fa;
-  border-left: 4px solid #007bff;
-  border-radius: 0 4px 4px 0;
+  color: #6b7280;
+  font-style: italic;
 }
 
-.example-section {
-  border-bottom: 1px solid #e9ecef;
+/* ===== CARD FOOTER ===== */
+
+.card-footer {
+  flex-shrink: 0;
+  border-top: 1px solid #e2e8f0;
+  padding: 0.75rem 1rem;
+  min-height: 60px;
+  background: white;
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.btn {
+  flex: 1;
+  padding: 0.5rem 1rem;
+  min-height: 40px;
+  border-radius: 8px;
+  font-size: 0.875rem;
+  font-weight: 500;
+  border: none;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.375rem;
+  transition: all 0.2s ease;
+}
+
+.btn-example {
+  background: #f3f4f6;
+  color: #374151;
+  border: 1px solid #d1d5db;
+}
+
+.btn-example:hover {
+  background: #e5e7eb;
+  border-color: #9ca3af;
+}
+
+.btn-learn {
+  background: #10b981;
+  color: white;
+  border: 1px solid #10b981;
+}
+
+.btn-learn:hover {
+  background: #059669;
+  border-color: #059669;
+}
+
+.btn-learn.learned {
+  background: #059669;
+  border-color: #059669;
+}
+
+/* ===== EXAMPLES (BACK SIDE) ===== */
+
+.examples {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  height: 100%;
+  overflow-y: auto;
+}
+
+.example-item {
   padding-bottom: 0.75rem;
+  border-bottom: 1px solid #e5e7eb;
 }
 
-.example-section:last-child {
+.example-item:last-child {
   border-bottom: none;
 }
 
-.pronunciation-btn:hover {
-  transform: scale(1.1);
+.example-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 0.375rem;
 }
 
-@media (hover: hover) {
-  .vocabulary-card:hover {
-    transform: translateY(-5px) scale(1.02);
-  }
+.example-item small {
+  font-weight: 600;
+  color: #6b7280;
+  text-transform: uppercase;
+  font-size: 0.75rem;
 }
 
-.usage-context {
-  background: #fff3cd;
-  padding: 10px;
-  border-radius: 6px;
-  border-left: 4px solid #ffc107;
+.example-text {
+  color: #374151;
+  font-style: italic;
+  line-height: 1.4;
+  margin-top: 0.25rem;
 }
 
-@media (max-width: 768px) {
-  .vocabulary-card-container {
-    min-height: 240px;
-    height: auto;
-  }
-  
-  .vocabulary-image-container {
-    height: 120px;
-    margin-bottom: 8px;
-  }
-  
-  .vocabulary-image-placeholder {
-    padding: 5px;
-  }
-  
-  .vocabulary-image-placeholder small {
-    font-size: 0.7rem;
-    line-height: 1.2;
-  }
-  
-  .card-face .card {
-    min-height: 200px;
-    display: flex !important;
-    flex-direction: column !important;
-  }
-  
-  .card-body {
-    flex: 1 1 auto !important;
-    padding: 12px !important;
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-start;
-    min-height: 0;
-  }
-  
-  .card-footer-mobile {
-    margin-top: auto !important;
-    flex-shrink: 0 !important;
-    padding: 8px 12px !important;
-    display: flex !important;
-    gap: 8px;
-    position: relative;
-    bottom: 0;
-    width: 100%;
-  }
-  
-  .mobile-button {
-    font-size: 0.875rem;
-    padding: 8px 12px;
-    min-height: 40px;
-    flex: 1;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-  }
+.usage-item {
+  margin-top: 0.5rem;
+  padding-top: 0.75rem;
+  border-top: 2px solid #e5e7eb;
 }
 
-/* Additional mobile styles for very small screens */
+.usage-text {
+  color: #6b7280;
+  line-height: 1.4;
+  margin-top: 0.25rem;
+}
+
+/* ===== LEARNED STATE ===== */
+
+.vocabulary-card.learned .card {
+  border-color: #10b981;
+  box-shadow: 0 4px 12px rgba(16, 185, 129, 0.25);
+}
+
+/* ===== RESPONSIVE DESIGN ===== */
+
+/* Small Mobile (≤480px) - Use show/hide instead of 3D flip */
 @media (max-width: 480px) {
   .vocabulary-card-container {
-    min-height: 200px;
-    height: auto;
+    height: 540px;
   }
   
-  .card-face .card {
-    min-height: 200px !important;
-    display: flex !important;
-    flex-direction: column !important;
+  .vocabulary-card {
+    transform-style: flat;
+    transition: none;
   }
   
-  .vocabulary-image-container {
-    height: 100px;
-    margin-bottom: 6px;
+  .vocabulary-card.flipped {
+    transform: none;
   }
   
-  .image-icon {
-    font-size: 1.2rem;
+  .card-face {
+    backface-visibility: visible;
+    -webkit-backface-visibility: visible;
+    transform: none;
   }
   
-  .vocabulary-image-placeholder small {
-    font-size: 0.65rem;
-  }
-  
-  .card-body {
-    padding: 8px !important;
-    flex: 1 1 auto !important;
-  }
-  
-  .card-footer-mobile {
-    flex-direction: column !important;
-    gap: 4px !important;
-    padding: 6px 8px !important;
-    margin-top: auto !important;
-    flex-shrink: 0 !important;
+  .card-front {
     position: relative;
-    bottom: 0;
-    width: 100%;
+    display: block;
   }
   
-  .mobile-button {
-    font-size: 0.75rem;
-    padding: 6px 10px;
-    min-height: 36px;
-    width: 100%;
-  }
-}
-
-/* Specific styles for 390px width devices (iPhone 12 Pro, etc.) */
-@media (max-width: 390px) {
-  .vocabulary-card-container {
-    min-height: 220px;
-    height: auto;
+  .card-back {
+    position: absolute;
+    display: none;
   }
   
-  .card-face .card {
-    min-height: 220px !important;
-    display: flex !important;
-    flex-direction: column !important;
+  .vocabulary-card.flipped .card-front {
+    display: none;
   }
   
-  .vocabulary-image-container {
-    height: 100px;
-    margin-bottom: 8px;
+  .vocabulary-card.flipped .card-back {
+    display: block;
+    position: relative;
   }
   
-  .vocabulary-image-placeholder {
-    padding: 6px;
+  .card-header {
+    padding: 0.5rem 0.75rem;
+    min-height: 50px;
+  }
+  
+  .card-title {
+    font-size: 1rem;
+  }
+  
+  .pronunciation-btn {
+    width: 32px;
+    height: 32px;
+    font-size: 12px;
   }
   
   .card-body {
-    padding: 10px !important;
-    flex: 1 1 auto !important;
+    padding: 1rem;
+    gap: 0.75rem;
   }
   
-  .card-footer-mobile {
-    flex-direction: row !important;
-    gap: 6px !important;
-    padding: 8px 10px !important;
-    margin-top: auto !important;
-    flex-shrink: 0 !important;
+  .card-image {
+    height: 200px;
   }
   
-  .mobile-button {
+  .translation-primary {
+    font-size: 1.1rem;
+  }
+  
+  .translation-secondary {
+    font-size: 0.9rem;
+  }
+  
+  .card-footer {
+    padding: 0.5rem 0.75rem;
+    min-height: 50px;
+    gap: 0.5rem;
+  }
+  
+  .btn {
+    padding: 0.375rem 0.75rem;
     font-size: 0.8rem;
-    padding: 8px 12px;
-    min-height: 38px;
-    flex: 1;
+    min-height: 36px;
+    gap: 0.25rem;
   }
 }
 
-/* Animation for card appearance */
-.vocabulary-card-container {
-  animation: slideInUp 0.5s ease-out;
+/* Tablet (481px - 767px) - Inherits all base 3D flip styles */
+@media (min-width: 481px) and (max-width: 767px) {
+  .vocabulary-card-container {
+    height: 500px;
+    perspective: 1000px;
+    display: block;
+    visibility: visible;
+  }
+  
+  .vocabulary-card {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    transform-style: preserve-3d;
+    transition: transform 0.6s ease;
+    display: block;
+    visibility: visible;
+  }
+  
+  .vocabulary-card.flipped {
+    transform: rotateY(180deg);
+  }
+  
+  .card-face {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    backface-visibility: hidden;
+    -webkit-backface-visibility: hidden;
+    display: block;
+    visibility: visible;
+  }
+  
+  .card-front {
+    z-index: 2;
+    transform: rotateY(0deg);
+  }
+  
+  .card-back {
+    transform: rotateY(180deg);
+  }
+  
+  .card {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    visibility: visible;
+  }
+  
+  .card-image {
+    height: 220px;
+  }
 }
 
-@keyframes slideInUp {
+/* Tablet Landscape (768px - 991px) */
+@media (min-width: 768px) and (max-width: 991px) {
+  .vocabulary-card-container {
+    height: 550px;
+  }
+  
+  .card-image {
+    height: 240px;
+  }
+}
+
+/* Desktop (992px - 1199px) */
+@media (min-width: 992px) and (max-width: 1199px) {
+  .vocabulary-card-container {
+    height: 580px;
+  }
+  
+  .card-image {
+    height: 260px;
+  }
+}
+
+/* Large Desktop (≥1200px) */
+@media (min-width: 1200px) {
+  .vocabulary-card-container {
+    height: 580px;
+  }
+  
+  .card-image {
+    height: 280px;
+  }
+}
+
+/* ===== ANIMATIONS ===== */
+
+@keyframes fadeInUp {
   from {
     opacity: 0;
     transform: translateY(30px);

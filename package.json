@@ -1,7 +1,7 @@
 {
-  "name": "hiligaynon-vocabulary-app",
+  "name": "speak-hiligaynon",
   "version": "1.0.0",
-  "description": "Interactive Hiligaynon/Ilonggo vocabulary learning app for Korean and Chinese students at Hua Siong College of Iloilo",
+  "description": "SPEAK Hiligaynon - Interactive Hiligaynon/Ilonggo vocabulary learning app for Korean and Chinese students at Hua Siong College of Iloilo",
   "type": "module",
   "scripts": {
     "dev": "vite",

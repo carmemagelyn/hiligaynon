@@ -1,4 +1,4 @@
-# Hiligaynon Vocabulary Learning App
+# SPEAK Hiligaynon
 
 An interactive Hiligaynon/Ilonggo vocabulary learning application designed specifically for Korean and Chinese students at Hua Siong College of Iloilo.
 

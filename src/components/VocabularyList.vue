@@ -1,51 +1,52 @@
 <template>
   <div class="vocabulary-container">
     <!-- Header Section -->
-    <section class="vocabulary-header py-4 bg-yinmn-blue">
+    <section class="vocabulary-header py-3 py-md-4 bg-yinmn-blue">
       <div class="container">
         <div class="row align-items-center">
-          <div class="col-lg-6">
-            <h1 class="text-white fw-bold mb-2">
+          <div class="col-12 col-lg-6 mb-3 mb-lg-0">
+            <h1 class="text-white fw-bold mb-2 fs-3 fs-md-1">
               <template v-if="currentCategory">
-                {{ currentCategory.icon }} {{ currentCategory.category }}
+                {{ currentCategory.icon }} 
+                <span class="d-inline d-sm-inline">{{ currentCategory.category }}</span>
               </template>
               <template v-else>
-                <Icon icon="mdi:book-open-page-variant" width="36" height="36" class="me-2" />
-                All Vocabulary
+                <Icon icon="mdi:book-open-page-variant" width="28" height="28" class="me-2" />
+                <span class="d-none d-sm-inline">All </span>Vocabulary
               </template>
             </h1>
-            <p class="text-white-50 mb-0">
+            <p class="text-white-50 mb-0 small">
               Learning in: {{ languageDisplay }} {{ languageEmoji }}
             </p>
           </div>
-          <div class="col-lg-6">
-            <div class="vocabulary-controls d-flex gap-3 justify-content-end flex-wrap">
+          <div class="col-12 col-lg-6">
+            <div class="vocabulary-controls d-flex gap-2 gap-md-3 justify-content-start justify-content-lg-end flex-wrap">
               <!-- View Mode Toggle -->
-              <div class="btn-group" role="group">
+              <div class="btn-group btn-group-sm btn-group-md-normal" role="group">
                 <button type="button" 
-                        :class="['btn', viewMode === 'cards' ? 'btn-rojo' : 'btn-outline-light']"
+                        :class="['btn', 'btn-sm', 'btn-md-normal', viewMode === 'cards' ? 'btn-rojo' : 'btn-outline-light']"
                         @click="setViewMode('cards')">
-                  <Icon icon="mdi:card-multiple-outline" width="20" height="20" class="me-2" />
-                  Cards
+                  <Icon icon="mdi:card-multiple-outline" width="16" height="16" class="me-1 me-md-2" />
+                  <span class="d-none d-sm-inline">Cards</span>
                 </button>
                 <button type="button" 
-                        :class="['btn', viewMode === 'list' ? 'btn-rojo' : 'btn-outline-light']"
+                        :class="['btn', 'btn-sm', 'btn-md-normal', viewMode === 'list' ? 'btn-rojo' : 'btn-outline-light']"
                         @click="setViewMode('list')">
-                  <Icon icon="mdi:format-list-bulleted" width="20" height="20" class="me-2" />
-                  List
+                  <Icon icon="mdi:format-list-bulleted" width="16" height="16" class="me-1 me-md-2" />
+                  <span class="d-none d-sm-inline">List</span>
                 </button>
                 <button type="button" 
-                        :class="['btn', viewMode === 'pronunciation' ? 'btn-rojo' : 'btn-outline-light']"
+                        :class="['btn', 'btn-sm', 'btn-md-normal', viewMode === 'pronunciation' ? 'btn-rojo' : 'btn-outline-light']"
                         @click="setViewMode('pronunciation')">
-                  <Icon icon="mdi:volume-high" width="20" height="20" class="me-2" />
-                  Audio
+                  <Icon icon="mdi:volume-high" width="16" height="16" class="me-1 me-md-2" />
+                  <span class="d-none d-sm-inline">Audio</span>
                 </button>
               </div>
               
               <!-- Shuffle Button -->
-              <button class="btn btn-outline-light" @click="shuffleVocabulary">
-                <Icon icon="mdi:shuffle-variant" width="20" height="20" class="me-2" />
-                Shuffle
+              <button class="btn btn-outline-light btn-sm btn-md-normal" @click="shuffleVocabulary">
+                <Icon icon="mdi:shuffle-variant" width="16" height="16" class="me-1 me-md-2" />
+                <span class="d-none d-sm-inline">Shuffle</span>
               </button>
             </div>
           </div>
@@ -56,20 +57,20 @@
     <!-- Search and Filter Section -->
     <section class="py-3 bg-light">
       <div class="container">
-        <div class="row">
-          <div class="col-lg-8">
+        <div class="row g-3">
+          <div class="col-12 col-lg-8">
             <div class="search-box position-relative">
               <input type="text" 
                      v-model="searchTerm" 
-                     class="form-control form-control-lg"
+                     class="form-control"
                      placeholder="Search vocabulary..." />
               <span class="search-icon">
                 <Icon icon="mdi:magnify" width="20" height="20" />
               </span>
             </div>
           </div>
-          <div class="col-lg-4">
-            <select v-model="selectedCategoryFilter" class="form-select form-select-lg">
+          <div class="col-12 col-lg-4">
+            <select v-model="selectedCategoryFilter" class="form-select">
               <option value="">All Categories</option>
               <option v-for="category in allCategories" :key="category.id" :value="category.id">
                 {{ category.icon }} {{ category.name }}
@@ -85,11 +86,11 @@
       <div class="container">
         <!-- Progress Info -->
         <div class="progress-info mb-4 text-center">
-          <div class="d-inline-flex align-items-center gap-3 p-3 bg-white rounded-3 shadow-sm">
-            <span class="badge bg-primary fs-6">{{ filteredVocabulary.length }} words</span>
-            <span class="text-muted">|</span>
+          <div class="d-inline-flex align-items-center gap-2 gap-md-3 p-2 p-md-3 bg-white rounded-3 shadow-sm flex-wrap justify-content-center">
+            <span class="badge bg-primary">{{ filteredVocabulary.length }} words</span>
+            <span class="text-muted d-none d-md-inline">|</span>
             <span class="small text-muted">Progress: {{ overallProgress }}%</span>
-            <div class="progress" style="width: 100px; height: 8px;">
+            <div class="progress" style="width: 80px; height: 6px;">
               <div class="progress-bar bg-success" :style="`width: ${overallProgress}%`"></div>
             </div>
           </div>
@@ -97,8 +98,8 @@
 
         <!-- Cards View -->
         <div v-if="viewMode === 'cards'" class="vocabulary-cards">
-          <div class="row">
-            <div class="col-12 col-sm-6 col-md-6 col-lg-6 col-xl-4 mb-4" v-for="word in paginatedVocabulary" :key="word.id">
+          <div class="row g-1">
+            <div class="col-12 col-sm-6 col-lg-4 col-xl-3 mb-1" v-for="word in paginatedVocabulary" :key="word.id">
               <VocabularyCard 
                 :word="word" 
                 :selected-language="selectedLanguage"
@@ -168,9 +169,12 @@
         <!-- Pagination -->
         <div class="pagination-container mt-4" v-if="totalPages > 1">
           <nav>
-            <ul class="pagination justify-content-center">
+            <ul class="pagination pagination-sm justify-content-center">
               <li class="page-item" :class="{ disabled: currentPage === 1 }">
-                <button class="page-link" @click="setPage(currentPage - 1)">Previous</button>
+                <button class="page-link" @click="setPage(currentPage - 1)">
+                  <Icon icon="mdi:chevron-left" width="16" height="16" class="d-md-none" />
+                  <span class="d-none d-md-inline">Previous</span>
+                </button>
               </li>
               <li class="page-item" 
                   v-for="page in visiblePages" 
@@ -179,7 +183,10 @@
                 <button class="page-link" @click="setPage(page)">{{ page }}</button>
               </li>
               <li class="page-item" :class="{ disabled: currentPage === totalPages }">
-                <button class="page-link" @click="setPage(currentPage + 1)">Next</button>
+                <button class="page-link" @click="setPage(currentPage + 1)">
+                  <Icon icon="mdi:chevron-right" width="16" height="16" class="d-md-none" />
+                  <span class="d-none d-md-inline">Next</span>
+                </button>
               </li>
             </ul>
           </nav>
@@ -509,14 +516,58 @@ export default {
   border-color: #007bff;
 }
 
+/* Mobile responsive styles */
 @media (max-width: 768px) {
-  .vocabulary-controls {
-    justify-content: center !important;
-    margin-top: 1rem;
+  .vocabulary-header {
+    padding: 1rem 0 !important;
   }
   
-  .vocabulary-controls .btn-group {
-    margin-bottom: 0.5rem;
+  .vocabulary-header h1 {
+    font-size: 1.5rem !important;
+  }
+  
+  .vocabulary-controls {
+    justify-content: flex-start !important;
+    gap: 0.5rem !important;
+  }
+  
+  /* Remove gaps on mobile */
+  .vocabulary-cards .row {
+    margin: 0 !important;
+    --bs-gutter-x: 0.25rem !important;
+    --bs-gutter-y: 0.25rem !important;
+  }
+  
+  .vocabulary-cards [class*="col-"] {
+    margin-bottom: 0.25rem !important;
+    padding-left: 0.125rem !important;
+    padding-right: 0.125rem !important;
+  }
+  
+  .vocabulary-controls .btn-group .btn {
+    padding: 0.375rem 0.5rem;
+    font-size: 0.875rem;
+  }
+  
+  .vocabulary-controls button {
+    padding: 0.375rem 0.5rem;
+    font-size: 0.875rem;
+  }
+  
+  /* Search section mobile */
+  .search-box input {
+    font-size: 1rem;
+    padding: 0.75rem 2.5rem 0.75rem 1rem;
+  }
+  
+  .search-icon {
+    right: 0.75rem;
+  }
+  
+  /* Progress info mobile */
+  .progress-info .badge {
+    font-size: 0.75rem;
+    padding: 0.5rem 0.75rem;
   }
   
   /* Ensure vocabulary content is visible on mobile */
@@ -528,12 +579,12 @@ export default {
   }
   
   .vocabulary-cards .row {
-    margin: 0 -8px;
+    margin: 0 -0.5rem;
   }
   
-  .vocabulary-cards .col-12 {
-    padding: 0 8px;
-    margin-bottom: 16px !important;
+  .vocabulary-cards [class*="col-"] {
+    padding: 0 0.5rem;
+    margin-bottom: 1rem !important;
   }
   
   /* Mobile vocabulary display fixes */
@@ -546,13 +597,6 @@ export default {
     width: 100% !important;
     display: flex !important;
     flex-wrap: wrap !important;
-    margin: 0 !important;
-  }
-  
-  .vocabulary-cards .col-12 {
-    width: 100% !important;
-    padding: 8px !important;
-    display: block !important;
   }
   
   /* Force vocabulary card container to show */
@@ -560,7 +604,110 @@ export default {
     display: block !important;
     width: 100% !important;
     height: auto !important;
-    min-height: 400px !important;
+    min-height: 240px !important;
+  }
+  
+  /* Pagination mobile */
+  .pagination {
+    margin-bottom: 0;
+  }
+  
+  .pagination .page-link {
+    padding: 0.5rem 0.75rem;
+    font-size: 0.875rem;
+  }
+}
+
+/* Small mobile devices */
+@media (max-width: 480px) {
+  .vocabulary-header h1 {
+    font-size: 1.25rem !important;
+  }
+  
+  .vocabulary-controls .btn-group .btn {
+    padding: 0.25rem 0.5rem;
+    font-size: 0.75rem;
+  }
+  
+  .vocabulary-controls .btn-group .btn span {
+    display: none !important;
+  }
+  
+  .vocabulary-controls button {
+    padding: 0.25rem 0.5rem;
+    font-size: 0.75rem;
+  }
+  
+  .progress-info {
+    margin-bottom: 1rem !important;
+  }
+  
+  .vocabulary-cards [class*="col-"] {
+    padding: 0 0.25rem;
+    margin-bottom: 0.75rem !important;
+  }
+  
+  .vocabulary-card-container {
+    min-height: 200px !important;
+  }
+}
+
+/* Extra small devices (390px and below) */
+@media (max-width: 390px) {
+  .vocabulary-header {
+    padding: 0.75rem 0 !important;
+  }
+  
+  .container {
+    padding-left: 0.75rem;
+    padding-right: 0.75rem;
+  }
+  
+  .vocabulary-controls {
+    flex-direction: column !important;
+    align-items: flex-start !important;
+    gap: 0.5rem !important;
+  }
+  
+  /* Ultra-tight spacing on very small screens */
+  .vocabulary-cards .row {
+    margin: 0 !important;
+    --bs-gutter-x: 0.125rem !important;
+    --bs-gutter-y: 0.125rem !important;
+  }
+  
+  .vocabulary-cards [class*="col-"] {
+    margin-bottom: 0.125rem !important;
+    padding-left: 0.0625rem !important;
+    padding-right: 0.0625rem !important;
+  }
+  
+  .vocabulary-controls .btn-group {
+    width: 100%;
+    justify-content: space-between;
+  }
+  
+  .vocabulary-controls .btn-group .btn {
+    flex: 1;
+    padding: 0.5rem 0.25rem;
+  }
+  
+  .progress-info .d-inline-flex {
+    flex-direction: column !important;
+    gap: 0.5rem !important;
+  }
+  
+  .vocabulary-cards .row {
+    margin: 0 -0.25rem;
+  }
+  
+  .vocabulary-cards [class*="col-"] {
+    padding: 0 0.25rem;
+    margin-bottom: 0.5rem !important;
+  }
+  
+  .vocabulary-card-container {
+    min-height: 220px !important;
   }
 }
 </style>

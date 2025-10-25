@@ -5,16 +5,19 @@
       <div class="container text-center text-white">
         <div class="row justify-content-center">
           <div class="col-lg-8 col-md-10 col-sm-12">
-            <h1 class="display-4 fw-bold mb-4">
-              <Icon icon="mdi:flag" width="40" height="40" class="me-2" />
-              Learn Hiligaynon
-            </h1>
+            <!-- App Logo -->
+            <div class="app-logo">
+              <img 
+                src="/logo.png" 
+                alt="SPEAK Hiligaynon App Logo" 
+                class="logo-image"
+              />
+            </div>
+        
             <p class="lead mb-4">
-              Interactive vocabulary learning for Korean and Chinese students at Hua Siong College of Iloilo
-            </p>
-            <p class="mb-4">
               Master daily Hiligaynon phrases with photos, pronunciation, and real-life examples!
             </p>
+          
             
             <!-- Language Display -->
             <div class="language-display mb-4 p-3 rounded">
@@ -82,7 +85,7 @@
       <div class="container">
         <div class="row align-items-center mb-5">
           <div class="col-lg-6">
-            <h2 class="display-5 fw-bold mb-4">Why Learn Hiligaynon?</h2>
+            <h2 class="display-5 fw-bold mb-4">Why Learn with SPEAK Hiligaynon?</h2>
             <p class="lead mb-4">
               Hiligaynon (Ilonggo) is the heart language of Western Visayas, Philippines. 
               As a student at Hua Siong College of Iloilo, learning Hiligaynon will help you:
@@ -276,6 +279,22 @@ export default {
   background-position: center;
 }
 
+.app-logo {
+  margin-bottom: 1.5rem;
+}
+
+.logo-image {
+  width: 120px;
+  height: 120px;
+  object-fit: contain;
+  filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.2));
+  transition: transform 0.3s ease;
+}
+
+.logo-image:hover {
+  transform: scale(1.05);
+}
+
 .stat-card {
   transition: transform 0.2s;
   border: 1px solid #e0e0e0;
@@ -325,8 +344,8 @@ export default {
 }
 
 .logo-image {
-  width: 120px;
-  height: 120px;
+  width: 300px;
+  height: 300px;
   transition: transform 0.3s ease;
   filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.1));
 }
@@ -382,8 +401,8 @@ export default {
   }
   
   .logo-image {
-    width: 80px;
-    height: 80px;
+    width: 200px;
+    height: 200px;
   }
 }
 
@@ -416,6 +435,11 @@ export default {
   
   .stat-label {
     font-size: 0.85rem !important;
+  }
+  
+  .logo-image {
+    width: 150px;
+    height: 150px;
   }
 }
 </style>

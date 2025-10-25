@@ -3,8 +3,12 @@
     <!-- Navigation Header -->
     <nav class="navbar navbar-expand-lg navbar-dark navbar-hua-siong">
       <div class="container">
-        <router-link to="/" class="navbar-brand fw-bold">
-          🇵🇭 Hiligaynon Learning
+        <router-link to="/" class="navbar-brand fw-bold d-flex align-items-center">
+          <img 
+            src="/logo.png" 
+            alt="SPEAK Hiligaynon Logo" 
+            class="navbar-logo me-2"
+          />
         </router-link>
         
         <button 
@@ -39,19 +43,23 @@
           </ul>
           
           <!-- Language Selection in Header -->
-          <div class="d-flex align-items-center">
-            <span class="text-white me-2">Language:</span>
+          <div class="d-flex align-items-center flex-wrap">
+            <span class="text-white me-2 d-none d-md-inline">Language:</span>
             <button 
               @click="setLanguage('korean')" 
-              :class="['btn btn-sm me-1', selectedLanguage === 'korean' ? 'btn-hua-siong-primary' : 'btn-white-inactive']"
+              :class="['btn btn-sm me-1 mb-1', selectedLanguage === 'korean' ? 'btn-hua-siong-primary' : 'btn-white-inactive']"
             >
-              🇰🇷 Korean
+              <Icon icon="flag:kr-4x3" width="16" height="16" class="me-1" />
+              <span class="d-none d-sm-inline">Korean</span>
+              <span class="d-inline d-sm-none">KR</span>
             </button>
             <button 
               @click="setLanguage('chinese')" 
-              :class="['btn btn-sm', selectedLanguage === 'chinese' ? 'btn-hua-siong-primary' : 'btn-white-inactive']"
+              :class="['btn btn-sm mb-1', selectedLanguage === 'chinese' ? 'btn-hua-siong-primary' : 'btn-white-inactive']"
             >
-              🇨🇳 Chinese
+              <Icon icon="flag:cn-4x3" width="16" height="16" class="me-1" />
+              <span class="d-none d-sm-inline">Chinese</span>
+              <span class="d-inline d-sm-none">CN</span>
             </button>
           </div>
         </div>
@@ -66,7 +74,7 @@
             <h5 class="modal-title">Choose Your Native Language</h5>
           </div>
           <div class="modal-body text-center p-4">
-            <p class="mb-4">Welcome to Hiligaynon Learning App! Please select your native language to personalize your learning experience.</p>
+            <p class="mb-4">Welcome to SPEAK Hiligaynon! Please select your native language to personalize your learning experience.</p>
             
             <div class="row">
               <div class="col-6">
@@ -105,8 +113,8 @@
     <!-- Footer -->
     <footer class="bg-dark text-white text-center py-3 mt-5">
       <div class="container">
-        <p class="mb-1">© 2025 Hua Siong College of Iloilo - Hiligaynon Learning App</p>
-        <p class="mb-0 small">Empowering Korean and Chinese students to learn Hiligaynon for daily living</p>
+        <p class="mb-1">© 2025 SPEAK Hiligaynon. All rights reserved.</p>
+       
       </div>
     </footer>
   </div>
@@ -187,6 +195,12 @@ export default {
   font-size: 1.5rem;
 }
 
+.navbar-logo {
+  width: 100px;
+  height: 100px;
+  object-fit: contain;
+}
+
 .nav-link.router-link-active {
   color: #fcd116 !important;
   font-weight: bold;
@@ -230,6 +244,11 @@ export default {
   .d-flex.align-items-center span {
     margin-bottom: 0.5rem;
     margin-right: 0 !important;
+  }
+  
+  .navbar-logo {
+    width: 50px;
+    height: 50px;
   }
 }
 </style>

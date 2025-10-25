@@ -20,7 +20,13 @@ export const vocabularyData = {
           hiligaynon: 'Maayong adlaw sa inyo tanan!',
           english: 'Good day to all of you!',
           korean: '여러분 모두 안녕하세요!',
-          chinese: '大家好！'
+          chinese: '대가好！'
+        },
+        hasImage: true,
+        image: {
+          url: '/images/Thankyou.png',
+          title: 'Good day - Maayong adlaw',
+          description: 'Greeting and saying good day'
         },
         image_description: 'People waving and greeting each other',
         category_tags: ['basic', 'formal', 'daily']
@@ -39,6 +45,12 @@ export const vocabularyData = {
           korean: '잘 지내고 있어요?',
           chinese: '你过得怎么样？'
         },
+        hasImage: true,
+        image: {
+          url: '/images/Thankyou.png',
+          title: 'How are you - Kumusta',
+          description: 'Asking about someone\'s well-being'
+        },
         image_description: 'Two people having a friendly conversation',
         category_tags: ['basic', 'conversation', 'daily']
       },
@@ -56,6 +68,12 @@ export const vocabularyData = {
           korean: '도움을 주셔서 정말 감사합니다.',
           chinese: '非常感谢你的帮助。'
         },
+        hasImage: true,
+        image: {
+          url: '/images/Thankyou.png',
+          title: 'Thank you - Salamat',
+          description: 'Person expressing gratitude and saying thank you'
+        },
         image_description: 'Person bowing or gesturing thank you',
         category_tags: ['basic', 'polite', 'daily']
       },
@@ -69,13 +87,13 @@ export const vocabularyData = {
         usage: 'Apologizing or getting attention politely',
         example_sentence: {
           hiligaynon: 'Pasensya na, pwede ka labay?',
-          english: 'Excuse me, may I pass by?',
+          english: 'Excuse me, may I pass?',
           korean: '실례합니다, 화장실이 어디에 있나요?',
           chinese: '不好意思，厕所在哪里？'
         },
         hasImage: true,
         image: {
-          url: '/images/excuse-me.jpeg',
+          url: '/images/Thankyou.png',
           title: 'Excuse me - Pasensya na',
           description: 'Person politely asking for directions'
         },
@@ -95,6 +113,12 @@ export const vocabularyData = {
           english: 'No, I don\'t have money.',
           korean: '아니요, 저는 돈이 없어요.',
           chinese: '不，我没有钱。'
+        },
+        hasImage: true,
+        image: {
+          url: '/images/Thankyou.png',
+          title: 'No - Indi',
+          description: 'Negative response or disagreement'
         },
         image_description: 'Person shaking head or making no gesture',
         category_tags: ['basic', 'response', 'essential']
@@ -120,7 +144,13 @@ export const vocabularyData = {
           hiligaynon: 'Mag-kaon kita!',
           english: 'Let\'s eat!',
           korean: '오후에 같이 먹어요.',
-          chinese: '我们下午一起吃饭吧。'
+          chinese: '我们下午一起 먹어요.'
+        },
+        hasImage: true,
+        image: {
+          url: '/images/Thankyou.png',
+          title: 'Eat - Kaon',
+          description: 'People eating together at a table'
         },
         image_description: 'People eating together at a table',
         category_tags: ['basic', 'verb', 'daily']
@@ -139,6 +169,12 @@ export const vocabularyData = {
           korean: '따뜻한 밥을 원해요.',
           chinese: '我想要热米饭。'
         },
+        hasImage: true,
+        image: {
+          url: '/images/Thankyou.png',
+          title: 'Rice - Kan-on',
+          description: 'Bowl of steaming white rice'
+        },
         image_description: 'Bowl of steaming white rice',
         category_tags: ['food', 'staple', 'basic']
       },
@@ -155,6 +191,12 @@ export const vocabularyData = {
           english: 'Can I buy some water?',
           korean: '물을 살 수 있나요?',
           chinese: '我可以买点水吗？'
+        },
+        hasImage: true,
+        image: {
+          url: '/images/Thankyou.png',
+          title: 'Water - Tubig',
+          description: 'Glass of clear water'
         },
         image_description: 'Glass of clear water',
         category_tags: ['beverage', 'basic', 'essential']
@@ -173,6 +215,12 @@ export const vocabularyData = {
           korean: '일로일로의 바쳐이가 가장 맛있어요.',
           chinese: '伊洛伊洛的汤面最好吃。'
         },
+        hasImage: true,
+        image: {
+          url: '/images/Thankyou.png',
+          title: 'Batchoy - La Paz Batchoy',
+          description: 'Bowl of La Paz Batchoy with noodles and toppings'
+        },
         image_description: 'Bowl of La Paz Batchoy with noodles and toppings',
         category_tags: ['local', 'specialty', 'noodles']
       },
@@ -189,6 +237,12 @@ export const vocabularyData = {
           english: 'Puto with cheese is delicious.',
           korean: '치즈가 있는 푸토가 맛있어요.',
           chinese: '有奶酪的米糕很好吃。'
+        },
+        hasImage: true,
+        image: {
+          url: '/images/Thankyou.png',
+          title: 'Puto - Steamed rice cake',
+          description: 'Colorful steamed rice cakes with cheese'
         },
         image_description: 'Colorful steamed rice cakes with cheese',
         category_tags: ['dessert', 'traditional', 'snack']
@@ -216,6 +270,12 @@ export const vocabularyData = {
           korean: '저는 매일 학교에 가요.',
           chinese: '我每天去学校。'
         },
+        hasImage: true,
+        image: {
+          url: '/images/Thankyou.png',
+          title: 'School - Eskwelahan',
+          description: 'School building with students'
+        },
         image_description: 'School building with students',
         category_tags: ['basic', 'education', 'place']
       },
@@ -232,6 +292,12 @@ export const vocabularyData = {
           english: 'Our teacher is very kind.',
           korean: '우리 선생님은 정말 친절해요.',
           chinese: '我们的老师非常善良。'
+        },
+        hasImage: true,
+        image: {
+          url: '/images/Thankyou.png',
+          title: 'Teacher - Maestro',
+          description: 'Female teacher in classroom'
         },
         image_description: 'Female teacher in classroom',
         category_tags: ['people', 'education', 'formal']
@@ -250,6 +316,12 @@ export const vocabularyData = {
           korean: '제 책을 잊었어요.',
           chinese: '我忘了带书。'
         },
+        hasImage: true,
+        image: {
+          url: '/images/Thankyou.png',
+          title: 'Book - Libro',
+          description: 'Stack of textbooks'
+        },
         image_description: 'Stack of textbooks',
         category_tags: ['object', 'study', 'basic']
       },
@@ -265,7 +337,13 @@ export const vocabularyData = {
           hiligaynon: 'Ma-sulat kita sang homework.',
           english: 'Let\'s write the homework.',
           korean: '숙제를 써요.',
-          chinese: '我们写作业吧。'
+          chinese: '我们写작业吧。'
+        },
+        hasImage: true,
+        image: {
+          url: '/images/Thankyou.png',
+          title: 'Write - Sulat',
+          description: 'Student writing in notebook'
         },
         image_description: 'Student writing in notebook',
         category_tags: ['verb', 'study', 'activity']
@@ -283,6 +361,12 @@ export const vocabularyData = {
           english: 'We have an exam tomorrow in Math.',
           korean: '내일 수학 시험이 있어요.',
           chinese: '我们明天有数学考试。'
+        },
+        hasImage: true,
+        image: {
+          url: '/images/Thankyou.png',
+          title: 'Exam - Test',
+          description: 'Students taking an exam'
         },
         image_description: 'Students taking an exam',
         category_tags: ['academic', 'test', 'school']
@@ -308,7 +392,13 @@ export const vocabularyData = {
           hiligaynon: 'Masakay kita sang jeep pakadto sa plaza.',
           english: 'Let\'s ride the jeepney going to the plaza.',
           korean: '광장으로 가는 지프니를 타요.',
-          chinese: '我们坐吉普尼去广场吧。'
+          chinese: '我们坐吉普尼去광장吧。'
+        },
+        hasImage: true,
+        image: {
+          url: '/images/Thankyou.png',
+          title: 'Jeepney - Jeep',
+          description: 'Colorful jeepney on the street'
         },
         image_description: 'Colorful jeepney on the street',
         category_tags: ['vehicle', 'public', 'local']
@@ -327,6 +417,12 @@ export const vocabularyData = {
           korean: 'SM 시티가 어디에 있나요?',
           chinese: 'SM城在哪里？'
         },
+        hasImage: true,
+        image: {
+          url: '/images/Thankyou.png',
+          title: 'Where - Diin',
+          description: 'Person pointing and asking directions'
+        },
         image_description: 'Person pointing and asking directions',
         category_tags: ['question', 'direction', 'basic']
       },
@@ -344,6 +440,12 @@ export const vocabularyData = {
           korean: '트라이시클 요금이 얼마인가요?',
           chinese: '三轮车费多少钱？'
         },
+        hasImage: true,
+        image: {
+          url: '/images/Thankyou.png',
+          title: 'Tricycle - Motorcycle with sidecar',
+          description: 'Tricycle with driver'
+        },
         image_description: 'Tricycle with driver',
         category_tags: ['vehicle', 'fare', 'local']
       },
@@ -359,7 +461,13 @@ export const vocabularyData = {
           hiligaynon: 'Makadto kita sa tindahan sang school supplies.',
           english: 'Let\'s go to the school supplies store.',
           korean: '학용품 가게에 가요.',
-          chinese: '我们去文具店吧。'
+          chinese: '我们去문具店吧。'
+        },
+        hasImage: true,
+        image: {
+          url: '/images/Thankyou.png',
+          title: 'Store - Tindahan',
+          description: 'Small local store front'
         },
         image_description: 'Small local store front',
         category_tags: ['place', 'shopping', 'daily']
@@ -377,6 +485,12 @@ export const vocabularyData = {
           english: 'How much is the fare to the airport?',
           korean: '공항까지 요금이 얼마인가요?',
           chinese: '到机场的费用是多少？'
+        },
+        hasImage: true,
+        image: {
+          url: '/images/Thankyou.png',
+          title: 'Fare - Bayad',
+          description: 'Hand giving money for transportation'
         },
         image_description: 'Hand giving money for transportation',
         category_tags: ['money', 'transport', 'essential']
@@ -404,6 +518,12 @@ export const vocabularyData = {
           korean: '시장에서 과일을 사요.',
           chinese: '我们在市场买水果吧。'
         },
+        hasImage: true,
+        image: {
+          url: '/images/Thankyou.png',
+          title: 'Market - Merkado',
+          description: 'Busy traditional market scene'
+        },
         image_description: 'Busy traditional market scene',
         category_tags: ['place', 'shopping', 'local']
       },
@@ -420,6 +540,12 @@ export const vocabularyData = {
           english: 'How much is this mango?',
           korean: '이 망고가 얼마인가요?',
           chinese: '这个芒果多少钱？'
+        },
+        hasImage: true,
+        image: {
+          url: '/images/Thankyou.png',
+          title: 'How much - Pila',
+          description: 'Customer asking vendor about price'
         },
         image_description: 'Customer asking vendor about price',
         category_tags: ['question', 'price', 'essential']
@@ -438,6 +564,12 @@ export const vocabularyData = {
           korean: '가방을 사고 싶어요.',
           chinese: '我想买个包。'
         },
+        hasImage: true,
+        image: {
+          url: '/images/Thankyou.png',
+          title: 'Buy - Bakal',
+          description: 'Person purchasing items'
+        },
         image_description: 'Person purchasing items',
         category_tags: ['verb', 'shopping', 'basic']
       },
@@ -455,6 +587,12 @@ export const vocabularyData = {
           korean: '이 신발은 정말 비싸네요.',
           chinese: '这双鞋真的很贵。'
         },
+        hasImage: true,
+        image: {
+          url: '/images/Thankyou.png',
+          title: 'Expensive - Mahal',
+          description: 'Expensive items with price tags'
+        },
         image_description: 'Expensive items with price tags',
         category_tags: ['price', 'emotion', 'common']
       },
@@ -471,6 +609,12 @@ export const vocabularyData = {
           english: 'I don\'t have money right now.',
           korean: '지금 돈이 없어요.',
           chinese: '我现在没有钱。'
+        },
+        hasImage: true,
+        image: {
+          url: '/images/Thankyou.png',
+          title: 'Money - Kwarta',
+          description: 'Philippine peso bills and coins'
         },
         image_description: 'Philippine peso bills and coins',
         category_tags: ['money', 'basic', 'essential']
